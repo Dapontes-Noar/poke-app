@@ -1,6 +1,7 @@
-# flutter-core-clean-mvvm
+# Poke-app
 
-A flutter core with Clean architecture, MVVM design pattern with Bloc, Get_it, Dio, Hive and intl
+It is a simple Pokedex-style app that consumes the PokéAPI to display a list of Pokémon, show detailed information, and allow users to manage their favorites.
+The project follows Clean Architecture principles with Riverpod, Dio, Get_it, Freezed and Intl, implementing best practices in code quality, state management, and UI design based on the provided Figma.
 
 ## Getting Started
 
@@ -14,7 +15,7 @@ This project is a starting point for a Flutter application
     ```
 2. Navigate to the project directory
    ```bash
-   cd flutter_core_clean_mvvm
+   cd poke_app
    ```
 3. Install dependencies
    ```bash
@@ -24,13 +25,9 @@ This project is a starting point for a Flutter application
    ```bash
    flutter pub run build_runner build --delete-conflicting-outputs
    ```
-5. Generate localization files
+5. Run the app
    ```bash
-   flutter pub run intl_utils:generate
-   ```
-6. Run the app
-   ```bash
-    flutter run -t lib/main_dev.dart
+    flutter run -t lib/main.dart
     ```
 Can you use this command for installation, code generation and localization in one step:
 
@@ -59,8 +56,7 @@ divided into several layers:
 - **Dependency Injection**: Utilizes `get_it` and `injectable` for managing dependencies through a centralized
   `RegisterModule`.
 - **Networking**: Uses `Dio` for HTTP requests, with custom interceptors and exception handling.
-- **State Management**: Implements the MVVM pattern using `Bloc` for state management.
-- **Local Storage**: Uses `Hive` for local data persistence.
+- **State Management**: Implements the MVVM pattern using `Riverpod` for state management.
 - **Localization**: Supports multiple languages using the `intl` package.
 - **Code Generation**: Leverages `build_runner` for generating boilerplate code, models, and localization files.
 - **Testing**: Includes unit and widget tests to ensure code quality and reliability.
@@ -109,7 +105,7 @@ Here’s a detailed section for your `README.md` describing the package structur
 
 - **app.dart / main_dev.dart**: Application entry points and configuration.
 - **core/**: Houses shared logic for dependency injection, networking, and utilities used across features.
-- **features/**: Each feature (meals, favorites, shopping) is self-contained, following Clean Architecture:
+- **features/**: Each feature is self-contained, following Clean Architecture:
     - **data/**: Handles data access, models, and repository implementations.
     - **domain/**: Contains business entities, repository interfaces, and use cases.
     - **presentation/**: Manages UI, view models, and widgets for each feature.
@@ -121,7 +117,7 @@ for Flutter development.
 
 ## Dependency Injection with RegisterModule
 
-This project uses a general module class, `RegisterModule`, to register dependencies via `get_it` and `injectable`.
+This project uses a general module class, `RegisterModule`, to register dependencies via `get_it` and `freezed`.
 
 **Example Implementation:**
 
