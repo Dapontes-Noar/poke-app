@@ -1,10 +1,11 @@
-import 'package:flutter_core_clean_mvvm/main.dart';
+import 'package:poke_app/main.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-GoRouter buildAppRouter() => GoRouter(
+part 'app_router.g.dart';
+
+@riverpod
+GoRouter buildAppRouter(Ref ref) => GoRouter(
   initialLocation: '/home',
-  routes: [
-    // Define your routes here
-    GoRoute(path: '/home', builder: (context, state) => MyHomePage()),
-  ],
+  routes: [GoRoute(path: '/home', builder: (context, state) => MyHomePage())],
 );

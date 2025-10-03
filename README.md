@@ -1,7 +1,9 @@
 # Poke-app
 
-It is a simple Pokedex-style app that consumes the PokéAPI to display a list of Pokémon, show detailed information, and allow users to manage their favorites.
-The project follows Clean Architecture principles with Riverpod, Dio, Get_it, Freezed and Intl, implementing best practices in code quality, state management, and UI design based on the provided Figma.
+A simple Pokedex-style app that consumes the PokéAPI to display a list of Pokémon, show detailed information, and
+allow users to manage their favorites.
+The project follows Clean Architecture principles with Riverpod, Dio, Freezed and Intl, implementing best practices in
+code quality, state management, and UI design based on the provided Figma.
 
 ## Getting Started
 
@@ -17,26 +19,14 @@ This project is a starting point for a Flutter application
    ```bash
    cd poke_app
    ```
-3. Install dependencies
+3. Install dependencies, generate code and localization files:
    ```bash
-   flutter pub get
+   flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs
    ```
-4. For code generation (models, localization, etc.), run:
-   ```bash
-   flutter pub run build_runner build --delete-conflicting-outputs
-   ```
-5. Run the app
+4. Run the app
    ```bash
     flutter run -t lib/main.dart
     ```
-Can you use this command for installation, code generation and localization in one step:
-
-```bash
-  flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs
-```
-
-To document the use of a general registration class named `RegisterModule` for dependency injection, add a section to
-your `README.md` like this:
 
 ---
 
@@ -47,14 +37,15 @@ your `README.md` like this:
 This project follows the Clean Architecture principles combined with the MVVM design pattern. The architecture is
 divided into several layers:
 
-- **Core Layer**: Contains shared utilities, dependency injection setup, and network configurations.
+- **Core Layer**: Contains shared utilities, dependency injection setup (Using Riverpod: if we need to manually
+  configure any provider), and network configurations.
 - **Feature Layer**: Each feature is self-contained with its own data, domain, and presentation layers.
 - **Shared Layer**: Contains reusable UI components, themes, and types used across multiple features.
 - **Routes Layer**: Manages navigation and routing within the application.
 - **Styles Layer**: Defines the app-wide theming and styles.
 - **App Entry Points**: Separate entry points for different build configurations (e.g., development, production).
-- **Dependency Injection**: Utilizes `get_it` and `injectable` for managing dependencies through a centralized
-  `RegisterModule`.
+- **Dependency Injection**: Utilizes `Riverpod` and `riverpod_annotations` for managing dependencies through generated
+  providers.
 - **Networking**: Uses `Dio` for HTTP requests, with custom interceptors and exception handling.
 - **State Management**: Implements the MVVM pattern using `Riverpod` for state management.
 - **Localization**: Supports multiple languages using the `intl` package.
@@ -73,7 +64,7 @@ lib/
 ├─ app.dart                   # App-level configuration and setup
 ├─ main_dev.dart              # Main entry for development builds
 ├─ core/                      # Shared utilities, dependency injection, network, constants
-│  ├─ di/                     # Dependency injection setup (e.g., Get_it)
+│  ├─ di/                     # Manual Riverpod providers if needed and centralized general providers (most DI uses @riverpod annotations)
 │  ├─ network/                # Network clients, API configuration (e.g., Dio)
 |  |   ├─ exceptions/         # Custom exceptions for network errors
 │  │   └─ interceptors/       # Dio interceptors for logging, auth, etc.
@@ -97,14 +88,10 @@ lib/
 └─ routes/                    # Centralized app routing
 ```
 
-Here’s a detailed section for your `README.md` describing the package structure and utility, tailored to your repo:
-
----
-
 ### Utility
 
 - **app.dart / main_dev.dart**: Application entry points and configuration.
-- **core/**: Houses shared logic for dependency injection, networking, and utilities used across features.
+- **core/**: Houses shared logic for dependency injection (Riverpod), networking, and utilities used across features.
 - **features/**: Each feature is self-contained, following Clean Architecture:
     - **data/**: Handles data access, models, and repository implementations.
     - **domain/**: Contains business entities, repository interfaces, and use cases.
@@ -115,67 +102,59 @@ Here’s a detailed section for your `README.md` describing the package structur
 This structure supports modularity, scalability, and maintainability, following Clean Architecture and MVVM principles
 for Flutter development.
 
-## Dependency Injection with RegisterModule
+## Dependency Injection with Riverpod
 
-This project uses a general module class, `RegisterModule`, to register dependencies via `get_it` and `freezed`.
+This project uses Riverpod and riverpod_annotations for dependency injection. Providers are defined using the
+`@riverpod` annotation, and code generation creates the necessary provider code. You do **not** need a manual
+registration class like `RegisterModule`.
+
+> **Note:** The `core/di/` folder is only needed if you have providers that cannot be generated with `@riverpod`
+> annotations (e.g., providers that require runtime values or complex setup). For most dependencies, use the
+> annotation-based approach as shown below.
 
 **Example Implementation:**
 
-Create `lib/core/di/register_module.dart`:
+Create a provider using `@riverpod` in your Dart file (e.g., `lib/core/network/dio_client.dart`):
 
 ```dart
-// dart
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-@module
-abstract class RegisterModule {
-  @lazySingleton
-  Dio dio() => Dio();
+part 'dio_client.g.dart';
 
-// Add other dependencies here
-}
-```
+@riverpod
+Dio dio(DioRef ref) => Dio();
 
-Set up injection in `lib/core/di/injection.dart`:
-
-```dart
-// dart
-import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
-import 'injection.config.dart';
-
-final GetIt getIt = GetIt.instance;
-
-@InjectableInit()
-Future<void> configureDependencies() async => getIt.init();
-```
-
-Initialize dependencies in your main entry file:
-
-```dart
-// dart
-void main() async {
-  await configureDependencies();
-  runApp(MyApp());
+@riverpod
+DioClient dioClient(DioClientRef ref) {
+  final dio = ref.watch(dioProvider);
+  return DioClient(dio);
 }
 ```
 
 Run code generation:
 
 ```bash
-  flutter pub run build_runner build --delete-conflicting-outputs
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+Use the generated providers in your widgets or classes:
+
+```dart
+
+final dioClient = ref.watch(dioClientProvider);
 ```
 
 ---
-This setup enables automatic registration and injection of dependencies using the `RegisterModule` class.
+This setup enables automatic registration and injection of dependencies using Riverpod and code generation.
 
 ## Routes
 
 This project uses a centralized routing system. All routes are defined in `lib/routes/app_router.dart`. You can add new
 routes by updating this file.
 
-In this project we use `go_router` package for routing., here is an example of how to define routes:
+In this project we use the `go_router` package for routing. Here is an example of how to define routes:
 
 ```dart
 GoRouter buildAppRouter() =>
@@ -195,7 +174,7 @@ This project uses the `intl` package for localization. To add a new language, fo
 1. Add the new language ARB file in `lib/l10n/` (e.g., `intl_es.arb` for Spanish).
 2. Run the following command to generate localization files:
    ```bash
-   flutter pub get
+   flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs
    ```
 3. Update the `supportedLocales` in `app.dart` to include the new language.
 4. Use the generated localization classes in your widgets, in this project we use `context.l10n.your_key`.

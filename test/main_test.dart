@@ -1,17 +1,13 @@
-// test/main_test.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_core_clean_mvvm/routes/app_router.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_core_clean_mvvm/main.dart';
-import 'package:go_router/go_router.dart';
+import 'package:poke_app/main.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  final GoRouter router = buildAppRouter();
   testWidgets('App renders MyHomePage and increments counter', (
     WidgetTester tester,
   ) async {
-    await tester.pumpWidget(MyApp(router: router));
+    await tester.pumpWidget(MyApp());
     expect(
       find.text('You have pushed the button this many times:'),
       findsOneWidget,

@@ -1,7 +1,6 @@
 class ApiConstants {
   //TODO: remember to change the base URL to the production one
-  static const String defaultBaseUrl =
-      'https://www.themealdb.com/api/json/v1/1';
+  static const String defaultBaseUrl = 'https://pokeapi.co/api/v2/';
   static const String baseUrl = String.fromEnvironment(
     'BASE_URL',
     defaultValue: defaultBaseUrl,
@@ -21,14 +20,6 @@ class ApiConstants {
   static const int statusOk = 200;
   static const int statusNotFound = 404;
   static const int statusInternalServerError = 500;
-
-  static const String login = '/auth/login';
-  static const String register = '/auth/register';
-  static const String refreshToken = '/auth/refresh';
-  static const String users = '/users';
-
-  //TODO: Temporary endpoint for testing
-  static const String randomWords = '/word';
 
   static const String authorizationHeader = 'Authorization';
   static const String bearerPrefix = 'Bearer ';

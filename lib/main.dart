@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_core_clean_mvvm/core/utils/extensions/context_extensions.dart';
-import 'package:flutter_core_clean_mvvm/l10n/app_localizations.dart';
-import 'package:go_router/go_router.dart';
-import 'core/di/injector.dart';
+import 'package:poke_app/core/utils/extensions/context_extensions.dart';
+import 'package:poke_app/routes/app_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:poke_app/l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureInjection();
-  runApp(MyApp(router: getIt<GoRouter>()));
+  runApp(ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
-  final GoRouter router;
-
-  const MyApp({super.key, required this.router});
+class MyApp extends ConsumerWidget {
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(buildAppRouterProvider);
     return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(

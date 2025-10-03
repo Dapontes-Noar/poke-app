@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_core_clean_mvvm/core/network/exceptions/dio_client_exception.dart';
-import 'package:injectable/injectable.dart';
+import 'package:poke_app/core/network/exceptions/dio_client_exception.dart';
 
-@lazySingleton
 class DioClient {
   final Dio _dio;
 
