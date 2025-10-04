@@ -15,7 +15,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(buildAppRouterProvider);
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Pokédex',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),

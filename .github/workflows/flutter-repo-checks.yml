@@ -13,45 +13,58 @@ jobs:
   repo-checks:
     name: Repo checks
     runs-on: ubuntu-latest
+
     steps:
+      # Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Java (for Flutter tooling on Linux)
+      # Java is needed for some Flutter tools on Linux
+      - name: Set up Java (for Flutter tooling)
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '11'
 
+      # Setup Flutter
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
 
+      # Cache pub packages only (no .dart_tool)
       - name: Cache pub packages
         uses: actions/cache@v4
         with:
-          path: |
-            ~/.pub-cache
-            .dart_tool
+          path: ~/.pub-cache
           key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pub-
 
+      # Clear possible corrupted build_runner cache
+      - name: Clear corrupted build_runner cache
+        run: |
+          rm -rf ~/.pub-cache/hosted/pub.dev/build_runner-*
+          rm -rf ~/.pub-cache/hosted/pub.dev/build_resolvers-*
+          rm -rf .dart_tool
+
+      # Install dependencies
       - name: Install dependencies
         run: flutter pub get
 
+      # Generate code (build_runner: Freezed, Riverpod, JSON, etc.)
       - name: Generate code (build_runner)
-        # runs code generation: hive adapters, json_serializable, etc.
         run: flutter pub run build_runner build --delete-conflicting-outputs
 
+      # Check code format (will fail if not formatted)
       - name: Dart format check
-        # fails the job if code is not formatted
         run: dart format --set-exit-if-changed .
 
+      # Static analysis
       - name: Static analysis
         run: flutter analyze
 
+      # Run tests with coverage
       - name: Run unit & widget tests
         run: |
           mkdir -p ci-artifacts
@@ -59,6 +72,7 @@ jobs:
         env:
           FLUTTER_TEST_TIMEOUT: 300000
 
+      # Upload coverage artifact
       - name: Upload coverage artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -66,6 +80,7 @@ jobs:
           name: coverage
           path: coverage
 
+      # Upload test logs artifact
       - name: Upload test logs artifact
         if: always()
         uses: actions/upload-artifact@v4
