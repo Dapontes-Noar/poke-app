@@ -45,4 +45,5 @@ dist/
 
 #auto generated files
 *.config.dart
+*.freezed.dart
 *.g.dart
