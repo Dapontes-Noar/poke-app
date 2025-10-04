@@ -27,7 +27,6 @@ This project is a starting point for a Flutter application
    ```bash
     flutter run -t lib/main.dart
     ```
-
 ---
 
 # Developer Guide
@@ -80,8 +79,8 @@ lib/
 │   │  ├─ repositories/       # Repository interfaces
 │   │  └─ usecases/           # Use case classes
 │   └─ presentation/          # Presentation layer
-│      ├─ pages/              # UI pages/screens
-│      ├─ viewmodels/         # MVVM view models
+│      ├─ screens/            # UI pages/screens
+│      ├─ notifiers/          # MVVM view models with riverpod state notifiers
 │      └─ widgets/            # Feature-specific widgets
 ├─ shared/                    # Shared UI widgets, theme, types
 ├─ styles/                    # App-wide theming and styles

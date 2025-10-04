@@ -1,22 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:poke_app/main.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
-  testWidgets('App renders MyHomePage and increments counter', (
+  testWidgets('App renders and shows Pokédex title', (
     WidgetTester tester,
   ) async {
-    await tester.pumpWidget(MyApp());
-    expect(
-      find.text('You have pushed the button this many times:'),
-      findsOneWidget,
-    );
-    expect(find.text('0'), findsOneWidget);
-
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    expect(find.text('1'), findsOneWidget);
+    await tester.pumpWidget(ProviderScope(child: MyApp()));
+    await tester.pumpAndSettle(const Duration(seconds: 2));
+    expect(find.text('Pokédex'), findsOneWidget);
   });
 }

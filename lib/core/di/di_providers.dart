@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'di_providers.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 Dio dio(Ref ref) {
   return Dio(
     BaseOptions(
@@ -19,7 +19,7 @@ Dio dio(Ref ref) {
   )..interceptors.add(LoggerInterceptor());
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 DioClient dioClient(Ref ref) {
   final dioInstance = ref.watch(dioProvider);
   return DioClient(dioInstance);
