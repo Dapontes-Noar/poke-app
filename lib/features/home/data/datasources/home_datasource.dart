@@ -2,7 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:poke_app/core/di/di_providers.dart';
 import 'package:poke_app/core/network/dio_client.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
+import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'home_datasource.g.dart';
 
 /// Data source for fetching Pokemons from the API.
 abstract class HomeDatasource {
@@ -12,6 +15,10 @@ abstract class HomeDatasource {
   Future<AllPokemonsResponse> getAllPokemons({
     Map<String, dynamic>? queryParameters,
   });
+
+  /// Fetches the detail of a single Pokemon by [nameOrId].
+  /// Throws a [DioException] or [Exception] if the request fails.
+  Future<PokemonDetailResponse> getPokemonDetail(String nameOrId);
 }
 
 class HomeDatasourceImpl implements HomeDatasource {
@@ -40,9 +47,25 @@ class HomeDatasourceImpl implements HomeDatasource {
       throw Exception('Failed to fetch Pokemons: \\${e.toString()}');
     }
   }
+
+  /// Fetches the detail of a single Pokemon by [nameOrId].
+  /// Throws a [DioException] or [Exception] if the request fails.
+  @override
+  Future<PokemonDetailResponse> getPokemonDetail(String nameOrId) async {
+    try {
+      return await _dioClient.get<PokemonDetailResponse>(
+        'pokemon/$nameOrId',
+        fromJson: (data) => PokemonDetailResponse.fromJson(data),
+      );
+    } on DioException catch (dioError) {
+      throw Exception('Network error: \\${dioError.message}');
+    } catch (e) {
+      throw Exception('Failed to fetch Pokemon detail: \\${e.toString()}');
+    }
+  }
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 HomeDatasource homeDatasource(Ref ref) {
   final dioClient = ref.watch(dioClientProvider);
   return HomeDatasourceImpl(dioClient);

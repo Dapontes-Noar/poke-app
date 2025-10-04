@@ -27,7 +27,6 @@ This project is a starting point for a Flutter application
    ```bash
     flutter run -t lib/main.dart
     ```
-
 ---
 
 # Developer Guide
