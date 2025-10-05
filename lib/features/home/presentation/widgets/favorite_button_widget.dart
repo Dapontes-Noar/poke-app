@@ -49,4 +49,3 @@ class _FavoriteButtonWidgetState extends State<FavoriteButtonWidget> {
     );
   }
 }
-

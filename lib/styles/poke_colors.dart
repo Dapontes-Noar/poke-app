@@ -27,6 +27,4 @@ class PokeColors {
   final Color electricTypeColor = Color(0xFFFDD835);
   final Color fireTypeColor = Color(0xFFFF9800);
   final Color groundTypeColor = Color(0xFFFFB300);
-
-
 }

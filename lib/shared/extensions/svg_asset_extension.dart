@@ -6,6 +6,8 @@ extension SvgAssetExtension on String {
   static const String _svgExtension = '.svg';
 
   /// Converts a string to an SVG asset widget.
-  Widget toImageSvgAsset({ColorFilter? colorFilter}) =>
-      SvgPicture.asset('$_basePath$this$_svgExtension', colorFilter: colorFilter);
+  Widget toImageSvgAsset({ColorFilter? colorFilter}) => SvgPicture.asset(
+    '$_basePath$this$_svgExtension',
+    colorFilter: colorFilter,
+  );
 }

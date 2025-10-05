@@ -30,7 +30,10 @@ class PokemonTypeChipWidget extends StatelessWidget {
           child: PokeTypeTheme.spriteFor(pokemonType.type.name),
         ),
       ),
-      label: Text(pokemonType.type.name.toCapitalize(), style: $pokeStyles.text.typeChipLabel),
+      label: Text(
+        pokemonType.type.name.toCapitalize(),
+        style: $pokeStyles.text.typeChipLabel,
+      ),
     );
   }
 }
