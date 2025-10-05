@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+import 'package:poke_app/core/utils/extensions/string_extensions.dart';
+import 'package:poke_app/features/home/data/models/pokemon_type_response.dart';
+import 'package:poke_app/shared/utils/poke_type_theme.dart';
+import 'package:poke_app/styles/poke_styles.dart';
+
+class PokemonTypeChipWidget extends StatelessWidget {
+  final PokemonTypeResponse pokemonType;
+
+  const PokemonTypeChipWidget({super.key, required this.pokemonType});
+
+  @override
+  Widget build(BuildContext context) {
+    return Chip(
+      padding: EdgeInsets.symmetric(
+        vertical: $pokeStyles.padding.pokeChipVertical,
+        horizontal: $pokeStyles.padding.pokeChipHorizontal,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: $pokeStyles.border.pokeChipRadius,
+      ),
+      side: BorderSide.none,
+      visualDensity: VisualDensity.standard,
+      elevation: 0,
+      backgroundColor: PokeTypeTheme.colorFor(pokemonType.type.name),
+      avatar: CircleAvatar(
+        backgroundColor: Colors.white,
+        child: Padding(
+          padding: EdgeInsets.all($pokeStyles.padding.typeChipAvatar),
+          child: PokeTypeTheme.spriteFor(pokemonType.type.name),
+        ),
+      ),
+      label: Text(
+        pokemonType.type.name.toCapitalize(),
+        style: $pokeStyles.text.typeChipLabel,
+      ),
+    );
+  }
+}
