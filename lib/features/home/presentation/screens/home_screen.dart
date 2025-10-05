@@ -49,6 +49,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           }
           return ListView.builder(
             itemCount: data.results.length,
+            padding: const EdgeInsets.all(16),
             itemBuilder: (context, index) {
               final pokemon = data.results[index];
               return PokemonListCardWidget(pokemonUrl: pokemon.url);
