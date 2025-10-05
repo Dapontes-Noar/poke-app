@@ -1,6 +1,10 @@
 import 'dart:ui';
 
 class PokeColors {
+  /// General colors
+  final bottomNavigationLabelSelectColor = const Color(0xFF0D47A1);
+  final bottomNavigationLabelUnselectColor = const Color(0xFF424242);
+
   /// Card colors
   final Color pokeIDColor = const Color(0xFF424242);
   final Color pokeNameColor = const Color(0xFF121212);

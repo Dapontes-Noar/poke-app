@@ -20,6 +20,7 @@ class _PokeText {
   late final TextStyle pokeIDText;
   late final TextStyle pokeName;
   late final TextStyle typeChipLabel;
+  late final TextStyle bottomNavigationLabel;
 
   _PokeText() {
     pokeIDText = TextStyle(
@@ -38,6 +39,12 @@ class _PokeText {
       color: $pokeStyles.colors.typeChipLabel,
       fontSize: 11,
       fontWeight: FontWeight.w600,
+      fontFamily: fontFamily,
+    );
+    bottomNavigationLabel = TextStyle(
+      color: $pokeStyles.colors.bottomNavigationLabelUnselectColor,
+      fontSize: 10,
+      fontWeight: FontWeight.w700,
       fontFamily: fontFamily,
     );
   }
