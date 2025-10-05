@@ -5,6 +5,14 @@ extension SvgAssetExtension on String {
   static const String _basePath = 'assets/images/';
   static const String _svgExtension = '.svg';
 
+  /// Converts a string to an SVG icon asset widget.
+  Widget toIconSvgAsset({ColorFilter? colorFilter}) => SvgPicture.asset(
+    '$_basePath$this$_svgExtension',
+    colorFilter: colorFilter,
+    width: 24,
+    height: 24,
+  );
+
   /// Converts a string to an SVG asset widget.
   Widget toImageSvgAsset({ColorFilter? colorFilter}) => SvgPicture.asset(
     '$_basePath$this$_svgExtension',

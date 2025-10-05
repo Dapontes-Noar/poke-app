@@ -101,14 +101,26 @@ abstract class AppLocalizations {
   /// No description provided for @homeTitle.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to the Home Page'**
+  /// **'Pokedex'**
   String get homeTitle;
 
-  /// No description provided for @counterMessage.
+  /// No description provided for @regionsTitle.
   ///
   /// In en, this message translates to:
-  /// **'You have pushed the button this many times:'**
-  String get counterMessage;
+  /// **'Regions'**
+  String get regionsTitle;
+
+  /// No description provided for @favoritesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get favoritesTitle;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileTitle;
 }
 
 class _AppLocalizationsDelegate

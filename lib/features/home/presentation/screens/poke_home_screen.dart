@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:poke_app/core/utils/extensions/context_extensions.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
 import 'package:poke_app/features/home/presentation/notifiers/home_notifier.dart';
-import 'package:poke_app/features/home/presentation/widgets/pokemon_list_card_widget.dart';
+import 'package:poke_app/features/home/presentation/widgets/poke_list_card_widget.dart';
 
 /// HomeScreen displays a list of Pokémons and handles loading and error states.
-class HomeScreen extends ConsumerStatefulWidget {
-  const HomeScreen({super.key});
+class PokeHomeScreen extends ConsumerStatefulWidget {
+  const PokeHomeScreen({super.key});
 
   @override
-  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<PokeHomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
+class _HomeScreenState extends ConsumerState<PokeHomeScreen> {
   String? _lastErrorMsg;
 
   /// Shows a snackbar for errors, only if it's a new error.
@@ -41,7 +42,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     });
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Pokédex')),
+      appBar: AppBar(title: Text(context.l10n.homeTitle)),
       body: asyncPokemons.when(
         data: (AllPokemonsResponse data) {
           if (data.results.isEmpty) {
@@ -52,7 +53,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             padding: const EdgeInsets.all(16),
             itemBuilder: (context, index) {
               final pokemon = data.results[index];
-              return PokemonListCardWidget(pokemonUrl: pokemon.url);
+              return PokeListCardWidget(pokemonUrl: pokemon.url);
             },
           );
         },

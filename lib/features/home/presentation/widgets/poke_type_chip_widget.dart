@@ -4,10 +4,10 @@ import 'package:poke_app/features/home/data/models/pokemon_type_response.dart';
 import 'package:poke_app/shared/utils/poke_type_theme.dart';
 import 'package:poke_app/styles/poke_styles.dart';
 
-class PokemonTypeChipWidget extends StatelessWidget {
+class PokeTypeChipWidget extends StatelessWidget {
   final PokemonTypeResponse pokemonType;
 
-  const PokemonTypeChipWidget({super.key, required this.pokemonType});
+  const PokeTypeChipWidget({super.key, required this.pokemonType});
 
   @override
   Widget build(BuildContext context) {
