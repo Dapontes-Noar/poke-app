@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
-import 'package:poke_app/shared/utils/poke_images.dart';
 import 'package:poke_app/shared/utils/poke_type_theme.dart';
 import 'package:poke_app/styles/poke_styles.dart';
 import 'favorite_button_widget.dart';
