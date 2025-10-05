@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
 import 'package:poke_app/shared/utils/poke_type_theme.dart';
 import 'package:poke_app/styles/poke_styles.dart';
-import 'favorite_button_widget.dart';
+import 'poke_favorite_button_widget.dart';
 
-class PokemonCardImageWidget extends StatelessWidget {
+class PokeCardImageWidget extends StatelessWidget {
   final PokemonDetailResponse pokemon;
 
-  const PokemonCardImageWidget({super.key, required this.pokemon});
+  const PokeCardImageWidget({super.key, required this.pokemon});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class PokemonCardImageWidget extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
-          const Positioned(top: 4, right: 4, child: FavoriteButtonWidget()),
+          const Positioned(top: 4, right: 4, child: PokeFavoriteButtonWidget()),
         ],
       ),
     );

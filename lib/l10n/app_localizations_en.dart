@@ -9,8 +9,14 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get homeTitle => 'Welcome to the Home Page';
+  String get homeTitle => 'Pokedex';
 
   @override
-  String get counterMessage => 'You have pushed the button this many times:';
+  String get regionsTitle => 'Regions';
+
+  @override
+  String get favoritesTitle => 'Favorites';
+
+  @override
+  String get profileTitle => 'Profile';
 }

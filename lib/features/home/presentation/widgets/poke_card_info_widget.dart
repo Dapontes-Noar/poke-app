@@ -3,12 +3,12 @@ import 'package:gap/gap.dart';
 import 'package:poke_app/core/utils/extensions/string_extensions.dart';
 import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
 import 'package:poke_app/styles/poke_styles.dart';
-import 'pokemon_type_chip_widget.dart';
+import 'poke_type_chip_widget.dart';
 
-class PokemonCardInfoWidget extends StatelessWidget {
+class PokeCardInfoWidget extends StatelessWidget {
   final PokemonDetailResponse pokemon;
 
-  const PokemonCardInfoWidget({super.key, required this.pokemon});
+  const PokeCardInfoWidget({super.key, required this.pokemon});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class PokemonCardInfoWidget extends StatelessWidget {
           spacing: 8,
           runSpacing: 8,
           children: pokemon.types
-              .map((type) => PokemonTypeChipWidget(pokemonType: type))
+              .map((type) => PokeTypeChipWidget(pokemonType: type))
               .toList(),
         ),
       ],

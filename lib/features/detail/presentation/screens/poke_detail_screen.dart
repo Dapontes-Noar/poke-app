@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
 
-class PokemonDetailScreen extends StatelessWidget {
+class PokeDetailScreen extends StatelessWidget {
   final PokemonDetailResponse pokemon;
 
-  const PokemonDetailScreen({super.key, required this.pokemon});
+  const PokeDetailScreen({super.key, required this.pokemon});
 
   @override
   Widget build(BuildContext context) => Scaffold(

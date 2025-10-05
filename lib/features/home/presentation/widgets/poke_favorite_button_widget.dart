@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/styles/poke_styles.dart';
 
-class FavoriteButtonWidget extends StatefulWidget {
-  const FavoriteButtonWidget({super.key});
+class PokeFavoriteButtonWidget extends StatefulWidget {
+  const PokeFavoriteButtonWidget({super.key});
 
   @override
-  State<FavoriteButtonWidget> createState() => _FavoriteButtonWidgetState();
+  State<PokeFavoriteButtonWidget> createState() =>
+      _PokeFavoriteButtonWidgetState();
 }
 
-class _FavoriteButtonWidgetState extends State<FavoriteButtonWidget> {
+class _PokeFavoriteButtonWidgetState extends State<PokeFavoriteButtonWidget> {
   bool _isFavorite = false;
 
   void _toggleFavorite() {

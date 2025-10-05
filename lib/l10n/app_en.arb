@@ -1,5 +1,7 @@
 {
   "@@locale": "en",
-  "homeTitle": "Welcome to the Home Page",
-  "counterMessage": "You have pushed the button this many times:"
+  "homeTitle": "Pokedex",
+  "regionsTitle": "Regions",
+  "favoritesTitle": "Favorites",
+  "profileTitle": "Profile"
 }
