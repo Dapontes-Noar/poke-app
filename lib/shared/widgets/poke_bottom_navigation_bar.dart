@@ -11,26 +11,36 @@ class PokeBottomNavigationBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentIndex = ref.watch(bottomNavigationProvider);
+    final navNotifier = ref.read(bottomNavigationProvider.notifier);
+    Color iconsColor(int index) => navNotifier.isCurrentIndex(index)
+        ? $pokeStyles.colors.bottomNavigationLabelSelectColor
+        : $pokeStyles.colors.bottomNavigationLabelUnselectColor;
     return BottomNavigationBar(
       unselectedItemColor:
           $pokeStyles.colors.bottomNavigationLabelUnselectColor,
       selectedItemColor: $pokeStyles.colors.bottomNavigationLabelSelectColor,
+      selectedIconTheme: IconThemeData(
+        color: $pokeStyles.colors.bottomNavigationLabelSelectColor,
+      ),
+      unselectedIconTheme: IconThemeData(
+        color: $pokeStyles.colors.bottomNavigationLabelUnselectColor,
+      ),
       type: BottomNavigationBarType.fixed,
       items: [
         BottomNavigationBarItem(
-          icon: PokeIcons.homeIcon,
+          icon: PokeIcons.homeIcon(color: iconsColor(0)),
           label: context.l10n.homeTitle,
         ),
         BottomNavigationBarItem(
-          icon: PokeIcons.regionIcon,
+          icon: PokeIcons.regionIcon(color: iconsColor(1)),
           label: context.l10n.regionsTitle,
         ),
         BottomNavigationBarItem(
-          icon: PokeIcons.favoriteIcon,
+          icon: PokeIcons.favoriteIcon(color: iconsColor(2)),
           label: context.l10n.favoritesTitle,
         ),
         BottomNavigationBarItem(
-          icon: PokeIcons.profileIcon,
+          icon: PokeIcons.profileIcon(color: iconsColor(3)),
           label: context.l10n.profileTitle,
         ),
       ],

@@ -7,17 +7,15 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'di_providers.g.dart';
 
 @Riverpod(keepAlive: true)
-Dio dio(Ref ref) {
-  return Dio(
-    BaseOptions(
-      baseUrl: ApiConstants.baseUrl,
-      connectTimeout: ApiConstants.connectTimeout,
-      receiveTimeout: ApiConstants.receiveTimeout,
-      headers: ApiConstants.defaultHeaders,
-      responseType: ResponseType.json,
-    ),
-  )..interceptors.add(LoggerInterceptor());
-}
+Dio dio(Ref ref) => Dio(
+  BaseOptions(
+    baseUrl: ApiConstants.baseUrl,
+    connectTimeout: ApiConstants.connectTimeout,
+    receiveTimeout: ApiConstants.receiveTimeout,
+    headers: ApiConstants.defaultHeaders,
+    responseType: ResponseType.json,
+  ),
+)..interceptors.add(LoggerInterceptor());
 
 @Riverpod(keepAlive: true)
 DioClient dioClient(Ref ref) {

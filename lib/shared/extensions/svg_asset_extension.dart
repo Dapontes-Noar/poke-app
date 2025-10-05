@@ -8,8 +8,15 @@ extension SvgAssetExtension on String {
   static const String _svgExtension = '.svg';
 
   /// Converts a string to an SVG icon asset widget.
-  Widget toIconSvgAsset() =>
-      SvgPicture.asset('$_baseIconsPath$this$_svgExtension', width: 24, height: 24);
+  Widget toIconSvgAsset({ColorFilter? colorFilter}) => SvgPicture.asset(
+    '$_baseIconsPath$this$_svgExtension',
+    colorFilter: colorFilter,
+    width: 24,
+    height: 24,
+  );
+
+  Image toImagePngAsset() =>
+      Image.asset('$_baseImagesPath$this.png', width: 24, height: 24);
 
   /// Converts a string to an SVG asset widget.
   Widget toImageSvgAsset({ColorFilter? colorFilter}) => SvgPicture.asset(

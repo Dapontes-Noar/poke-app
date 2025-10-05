@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
 import 'package:poke_app/features/home/presentation/notifiers/poke_details_notifier.dart';
 import 'package:poke_app/features/home/presentation/widgets/poke_card_info_widget.dart';
+import 'package:poke_app/routes/routes.dart';
 import 'package:poke_app/shared/utils/poke_type_theme.dart';
 import 'package:poke_app/styles/poke_styles.dart';
 import 'poke_card_image_widget.dart';
@@ -53,7 +54,7 @@ class PokeListCardWidget extends ConsumerWidget {
                 ],
               ),
             ),
-            onTap: () => context.go('/detail', extra: pokemon),
+            onTap: () => context.go(Routes.details, extra: pokemon),
           ),
         );
       },

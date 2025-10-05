@@ -19,7 +19,12 @@ class BottomNavigationNotifier extends _$BottomNavigationNotifier {
   @override
   int build() {
     _router = ref.read(buildAppRouterProvider);
-    return 0;
+    _router.routerDelegate.addListener(_syncOnRouterChange);
+    ref.onDispose(() {
+      _router.routerDelegate.removeListener(_syncOnRouterChange);
+    });
+    syncWithRoute(_router.state.name ?? '');
+    return state;
   }
 
   void onTabSelected(int index) {
@@ -29,10 +34,16 @@ class BottomNavigationNotifier extends _$BottomNavigationNotifier {
     _router.go(route);
   }
 
+  void _syncOnRouterChange() {
+    syncWithRoute(_router.state.matchedLocation ?? '');
+  }
+
   void syncWithRoute(String location) {
     final idx = _routes.indexWhere((route) => location.startsWith(route));
     state = idx >= 0 ? idx : 0;
   }
+
+  bool isCurrentIndex(int index) => state == index;
 
   String routeForIndex(int index) => _routes[index];
 }
