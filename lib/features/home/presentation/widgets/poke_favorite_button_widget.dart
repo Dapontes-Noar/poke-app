@@ -5,7 +5,8 @@ class PokeFavoriteButtonWidget extends StatefulWidget {
   const PokeFavoriteButtonWidget({super.key});
 
   @override
-  State<PokeFavoriteButtonWidget> createState() => _PokeFavoriteButtonWidgetState();
+  State<PokeFavoriteButtonWidget> createState() =>
+      _PokeFavoriteButtonWidgetState();
 }
 
 class _PokeFavoriteButtonWidgetState extends State<PokeFavoriteButtonWidget> {
