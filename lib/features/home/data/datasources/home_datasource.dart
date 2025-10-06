@@ -33,7 +33,6 @@ abstract class HomeDatasource {
 
 class HomeDatasourceImpl implements HomeDatasource {
   final DioClient _dioClient;
-  static const String _endpoint = 'pokemon/';
 
   HomeDatasourceImpl(this._dioClient);
 
@@ -45,15 +44,13 @@ class HomeDatasourceImpl implements HomeDatasource {
   }) async {
     try {
       return await _dioClient.get<AllPokemonsResponse>(
-        _endpoint,
+        'pokemon/',
         queryParameters: queryParameters,
         fromJson: (data) => AllPokemonsResponse.fromJson(data),
       );
     } on DioException catch (dioError) {
-      // Optionally log dioError
       throw Exception('Network error: \\${dioError.message}');
     } catch (e) {
-      // Optionally log the error
       throw Exception('Failed to fetch Pokemons: \\${e.toString()}');
     }
   }

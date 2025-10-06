@@ -64,4 +64,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get filterClear => 'Clear filter';
+
+  @override
+  String get generalErrorTitle => 'Something went wrong...';
+
+  @override
+  String get generalErrorDescription =>
+      'We couldn\'t load the information at this time. Please check your connection or try again later.';
+
+  @override
+  String get generalErrorRetry => 'Retry';
 }
