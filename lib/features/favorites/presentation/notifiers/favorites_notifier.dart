@@ -1,4 +1,3 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'favorites_notifier.g.dart';
@@ -7,6 +6,7 @@ part 'favorites_notifier.g.dart';
 class FavoritesNotifier extends _$FavoritesNotifier {
   final List<String> _favorites = [];
 
+  @override
   Future<List<String>> build() async {
     return _favorites;
   }
