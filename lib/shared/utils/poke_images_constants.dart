@@ -1,5 +1,10 @@
 // Sprite asset name constants for Pokémon types
 class PokeImagesConstants {
+  /// general assets path
+  static const String jigglypuffImage = 'jigglypuff_image';
+  static const String magikarpImage = 'magikarp_image';
+
+  /// pokemon type sprites
   static const String fireSprite = 'fire_sprite';
   static const String fireSpriteBackground = 'fire_white_sprite';
   static const String bugSprite = 'bug_sprite';

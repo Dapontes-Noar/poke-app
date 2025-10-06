@@ -121,6 +121,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profileTitle;
+
+  /// No description provided for @comingSoonTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming soon!'**
+  String get comingSoonTitle;
+
+  /// No description provided for @comingSoonDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We are working to bring you this section. Come back later to discover all the news.'**
+  String get comingSoonDescription;
+
+  /// No description provided for @noFavoritesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t marked any Pokémon as favorite'**
+  String get noFavoritesTitle;
+
+  /// No description provided for @noFavoritesDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Click the heart icon on your favorite Pokémon and they will appear here.'**
+  String get noFavoritesDescription;
 }
 
 class _AppLocalizationsDelegate

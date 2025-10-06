@@ -13,10 +13,8 @@ class GetPokemonDetailUsecase {
 
   /// Executes the use case to fetch a Pokemon's detail by [nameOrId].
   /// Throws an [Exception] if the fetch operation fails.
-  Future<PokemonDetailResponse> call(String url) async {
-    return await _repository.getPokemonDetail(
-      url.split('/').reversed.elementAt(1),
-    );
+  Future<PokemonDetailResponse> call(String name) async {
+    return await _repository.getPokemonDetail(name);
   }
 }
 

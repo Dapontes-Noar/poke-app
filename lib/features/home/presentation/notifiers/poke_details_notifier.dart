@@ -9,8 +9,8 @@ part 'poke_details_notifier.g.dart';
 @riverpod
 class PokeDetailsNotifier extends _$PokeDetailsNotifier {
   @override
-  Future<PokemonDetailResponse> build(String url) async {
+  Future<PokemonDetailResponse> build(String name) async {
     final getPokemonDetail = ref.read(getPokemonDetailUsecaseProvider);
-    return getPokemonDetail(url);
+    return getPokemonDetail(name);
   }
 }

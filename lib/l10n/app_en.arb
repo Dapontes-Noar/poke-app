@@ -3,5 +3,9 @@
   "homeTitle": "Pokedex",
   "regionsTitle": "Regions",
   "favoritesTitle": "Favorites",
-  "profileTitle": "Profile"
+  "profileTitle": "Profile",
+  "comingSoonTitle": "Coming soon!",
+  "comingSoonDescription": "We are working to bring you this section. Come back later to discover all the news.",
+  "noFavoritesTitle": "You haven't marked any Pokémon as favorite",
+  "noFavoritesDescription": "Click the heart icon on your favorite Pokémon and they will appear here."
 }

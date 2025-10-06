@@ -4,6 +4,8 @@ import 'package:poke_app/core/utils/extensions/context_extensions.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
 import 'package:poke_app/features/home/presentation/notifiers/home_notifier.dart';
 import 'package:poke_app/features/home/presentation/widgets/poke_list_card_widget.dart';
+import 'package:poke_app/shared/di/shared_providers.dart';
+import 'package:poke_app/styles/poke_styles.dart';
 
 /// HomeScreen displays a list of Pokémons and handles loading and error states.
 class PokeHomeScreen extends ConsumerStatefulWidget {
@@ -32,6 +34,7 @@ class _HomeScreenState extends ConsumerState<PokeHomeScreen> {
   @override
   Widget build(BuildContext context) {
     final asyncPokemons = ref.watch(homeNotifierProvider);
+    final bottomNavBar = ref.watch(pokeBottomNavigationBarProvider);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (asyncPokemons is AsyncError) {
         final errorMsg = asyncPokemons.error.toString();
@@ -40,9 +43,10 @@ class _HomeScreenState extends ConsumerState<PokeHomeScreen> {
         _lastErrorMsg = null;
       }
     });
-
     return Scaffold(
       appBar: AppBar(title: Text(context.l10n.homeTitle)),
+      backgroundColor: $pokeStyles.colors.scaffoldBgColor,
+      bottomNavigationBar: bottomNavBar,
       body: asyncPokemons.when(
         data: (AllPokemonsResponse data) {
           if (data.results.isEmpty) {
@@ -53,7 +57,7 @@ class _HomeScreenState extends ConsumerState<PokeHomeScreen> {
             padding: const EdgeInsets.all(16),
             itemBuilder: (context, index) {
               final pokemon = data.results[index];
-              return PokeListCardWidget(pokemonUrl: pokemon.url);
+              return PokeListCardWidget(pokemonUrl: pokemon.name);
             },
           );
         },

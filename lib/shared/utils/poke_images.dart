@@ -3,6 +3,13 @@ import 'package:poke_app/shared/extensions/svg_asset_extension.dart';
 import 'package:poke_app/shared/utils/poke_images_constants.dart';
 
 class PokeImages {
+  /// general assets
+  static final Image commingSoonJigglypuffImage = PokeImagesConstants
+      .jigglypuffImage
+      .toImagePngAsset();
+  static final Image errorMagikarpImage = PokeImagesConstants.magikarpImage
+      .toImagePngAsset();
+
   /// pokemon type sprites
   static final Widget fireSprite = PokeImagesConstants.fireSprite
       .toImageSvgAsset();
