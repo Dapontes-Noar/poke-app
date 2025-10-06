@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:poke_app/routes/app_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:poke_app/l10n/app_localizations.dart';
-import 'package:poke_app/core/logging.dart';
+import 'package:poke_app/core/errors/logging.dart';
 import 'package:logging/logging.dart';
 
 Future<void> main() async {

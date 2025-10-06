@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:poke_app/core/errors/error_messages.dart';
-import 'package:poke_app/core/logging.dart';
+import 'package:poke_app/core/errors/logging.dart';
 import 'package:poke_app/features/home/data/datasources/home_datasource.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
 import 'package:poke_app/features/home/data/models/all_types_response.dart';

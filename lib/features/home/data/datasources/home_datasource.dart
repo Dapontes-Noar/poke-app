@@ -3,7 +3,7 @@ import 'package:poke_app/core/errors/error_messages.dart';
 import 'package:poke_app/core/di/di_providers.dart';
 import 'package:poke_app/core/errors/pokemon_exceptions.dart';
 import 'package:poke_app/core/network/dio_client.dart';
-import 'package:poke_app/core/logging.dart';
+import 'package:poke_app/core/errors/logging.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
 import 'package:poke_app/features/home/data/models/all_types_response.dart';
 import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
