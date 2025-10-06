@@ -7,6 +7,7 @@ import 'package:poke_app/features/home/presentation/widgets/poke_list_card_widge
 import 'package:poke_app/shared/di/shared_providers.dart';
 import 'package:poke_app/shared/utils/poke_icons.dart';
 import 'package:poke_app/shared/widgets/poke_app_bar_widget.dart';
+import 'package:poke_app/shared/widgets/poke_general_error_widget.dart';
 import 'package:poke_app/styles/poke_styles.dart';
 
 class PokeFavoritesScreen extends ConsumerWidget {
@@ -54,7 +55,9 @@ class PokeFavoritesScreen extends ConsumerWidget {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Error: $e')),
+        error: (e, _) => PokeGeneralErrorWidget(
+          onRetry: ref.read(favoritesProvider.notifier).build,
+        ),
       ),
     );
   }

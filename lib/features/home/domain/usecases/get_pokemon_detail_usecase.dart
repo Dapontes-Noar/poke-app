@@ -5,13 +5,21 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'get_pokemon_detail_usecase.g.dart';
 
-/// Use case for fetching a single Pokemon's detail.
+/// Use case for fetching a single Pokémon's detail from the repository.
+///
+/// This class encapsulates the logic to retrieve the details of a specific Pokémon
+/// by its name or ID from the data source via the repository. It throws an exception
+/// if the operation fails.
 class GetPokemonDetailUsecase {
+  /// The repository used to fetch Pokémon details.
   final HomeRepository _repository;
 
+  /// Creates a [GetPokemonDetailUsecase] with the given [HomeRepository].
   GetPokemonDetailUsecase(this._repository);
 
-  /// Executes the use case to fetch a Pokemon's detail by [nameOrId].
+  /// Fetches a Pokémon's detail by [nameOrId].
+  ///
+  /// Returns a [PokemonDetailResponse] containing the Pokémon's details.
   /// Throws an [Exception] if the fetch operation fails.
   Future<PokemonDetailResponse> call(String name) async {
     return await _repository.getPokemonDetail(name);
@@ -19,6 +27,8 @@ class GetPokemonDetailUsecase {
 }
 
 /// Riverpod provider for [GetPokemonDetailUsecase].
+///
+/// Provides an instance of [GetPokemonDetailUsecase] using the [homeRepositoryProvider].
 @riverpod
 GetPokemonDetailUsecase getPokemonDetailUsecase(Ref ref) {
   final repository = ref.watch(homeRepositoryProvider);

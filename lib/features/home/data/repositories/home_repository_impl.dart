@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:poke_app/core/errors/error_messages.dart';
+import 'package:poke_app/core/logging.dart';
 import 'package:poke_app/features/home/data/datasources/home_datasource.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
 import 'package:poke_app/features/home/data/models/all_types_response.dart';
@@ -28,12 +30,15 @@ class HomeRepositoryImpl implements HomeRepository {
       if (allPokemons.results.isNotEmpty) {
         return allPokemons;
       } else {
-        throw Exception('No Pokemons found');
+        appLogger.severe('No Pokemons found');
+        throw Exception(ErrorMessages.noPokemonsFound);
       }
-    } on DioException catch (dioError) {
-      throw Exception('Network error: \\${dioError.message}');
-    } catch (e) {
-      throw Exception('Failed to fetch Pokemons: \\${e.toString()}');
+    } on DioException catch (dioError, st) {
+      appLogger.severe('Network error in getAllPokemons', dioError, st);
+      throw Exception(ErrorMessages.networkError);
+    } catch (e, st) {
+      appLogger.severe('Failed to fetch Pokemons', e, st);
+      throw Exception(ErrorMessages.fetchPokemonsFailed);
     }
   }
 
@@ -43,10 +48,12 @@ class HomeRepositoryImpl implements HomeRepository {
   Future<PokemonDetailResponse> getPokemonDetail(String nameOrId) async {
     try {
       return await _homeDatasource.getPokemonDetail(nameOrId);
-    } on DioException catch (dioError) {
-      throw Exception('Network error: \\${dioError.message}');
-    } catch (e) {
-      throw Exception('Failed to fetch Pokemon detail: \\${e.toString()}');
+    } on DioException catch (dioError, st) {
+      appLogger.severe('Network error in getPokemonDetail', dioError, st);
+      throw Exception(ErrorMessages.networkError);
+    } catch (e, st) {
+      appLogger.severe('Failed to fetch Pokemon detail', e, st);
+      throw Exception(ErrorMessages.fetchPokemonDetailFailed);
     }
   }
 
@@ -59,12 +66,15 @@ class HomeRepositoryImpl implements HomeRepository {
       if (allTypes.results.isNotEmpty) {
         return allTypes;
       } else {
-        throw Exception('No types found');
+        appLogger.severe('No types found');
+        throw Exception(ErrorMessages.noTypesFound);
       }
-    } on DioException catch (dioError) {
-      throw Exception('Network error: \\${dioError.message}');
-    } catch (e) {
-      throw Exception('Failed to fetch types: \\${e.toString()}');
+    } on DioException catch (dioError, st) {
+      appLogger.severe('Network error in getAllTypes', dioError, st);
+      throw Exception(ErrorMessages.networkError);
+    } catch (e, st) {
+      appLogger.severe('Failed to fetch types', e, st);
+      throw Exception(ErrorMessages.fetchTypesFailed);
     }
   }
 
@@ -77,12 +87,15 @@ class HomeRepositoryImpl implements HomeRepository {
       if (pokemonsByType.pokemon.isNotEmpty) {
         return pokemonsByType;
       } else {
-        throw Exception('No Pokemons found for type $name');
+        appLogger.severe('No Pokemons found for type $name');
+        throw Exception(ErrorMessages.noPokemonsFoundForType);
       }
-    } on DioException catch (dioError) {
-      throw Exception('Network error: \\${dioError.message}');
-    } catch (e) {
-      throw Exception('Failed to fetch Pokemons by type: \\${e.toString()}');
+    } on DioException catch (dioError, st) {
+      appLogger.severe('Network error in getPokemonsByType', dioError, st);
+      throw Exception(ErrorMessages.networkError);
+    } catch (e, st) {
+      appLogger.severe('Failed to fetch Pokemons by type', e, st);
+      throw Exception(ErrorMessages.fetchPokemonsByTypeFailed);
     }
   }
 }

@@ -22,7 +22,7 @@ class PokeListCardWidget extends ConsumerWidget {
         return AspectRatio(
           aspectRatio: MediaQuery.of(context).size.width > 400
               ? 16 / 5
-              : 16 / 6,
+              : 16 / 8,
           child: InkWell(
             child: Card(
               color: PokeTypeTheme.colorFor(
