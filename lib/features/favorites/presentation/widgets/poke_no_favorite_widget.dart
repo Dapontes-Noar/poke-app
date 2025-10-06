@@ -26,7 +26,7 @@ class PokeNoFavoriteWidget extends StatelessWidget {
               Text(
                 context.l10n.noFavoritesTitle,
                 textAlign: TextAlign.center,
-                style: $pokeStyles.text.noFavoritesTitle,
+                style: $pokeStyles.text.pokeAppTitle,
               ),
               MaxGap(8),
               Text(

@@ -25,12 +25,15 @@ class _PokeText {
   late final TextStyle comingSoonDescription;
   late final TextStyle bottomNavigationLabelSelected;
   late final TextStyle bottomNavigationLabelUnselected;
-  late final TextStyle noFavoritesTitle;
+  late final TextStyle pokeAppTitle;
+  late final TextStyle pokeSubTitleIcon;
   late final TextStyle noFavoritesDescription;
   late final TextStyle pokeAppBarTitle;
   late final TextStyle homeAppBarSearchHint;
   late final TextStyle homeAppBarSearchInput;
   late final TextStyle homeAppBarActionIcon;
+  late final TextStyle filterOptionsLabel;
+  late final TextStyle pokeButtonLabel;
 
   _PokeText() {
     pokeIDText = TextStyle(
@@ -69,7 +72,7 @@ class _PokeText {
       fontWeight: FontWeight.w400,
       fontFamily: fontFamily,
     );
-    noFavoritesTitle = TextStyle(
+    pokeAppTitle = TextStyle(
       color: $pokeStyles.colors.pokeNameColor,
       fontSize: 20,
       fontWeight: FontWeight.w600,
@@ -115,6 +118,24 @@ class _PokeText {
       color: $pokeStyles.colors.appBarSearchBorderColor,
       fontSize: 20,
       fontWeight: FontWeight.w400,
+      fontFamily: fontFamily,
+    );
+    pokeSubTitleIcon = TextStyle(
+      color: $pokeStyles.colors.pokeNameColor,
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      fontFamily: fontFamily,
+    );
+    filterOptionsLabel = TextStyle(
+      fontSize: 14,
+      color: $pokeStyles.colors.filterLabelColor,
+      fontFamily: fontFamily,
+      fontWeight: FontWeight.w500,
+    );
+    pokeButtonLabel = TextStyle(
+      color: $pokeStyles.colors.pokeNameColor,
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
       fontFamily: fontFamily,
     );
   }

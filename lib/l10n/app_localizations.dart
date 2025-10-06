@@ -151,6 +151,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search Pokémon...'**
   String get homeSearchHint;
+
+  /// No description provided for @filterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by your preferences'**
+  String get filterTitle;
+
+  /// No description provided for @filterTypes.
+  ///
+  /// In en, this message translates to:
+  /// **'Types'**
+  String get filterTypes;
+
+  /// No description provided for @filterApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get filterApply;
+
+  /// No description provided for @filterCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get filterCancel;
+
+  /// No description provided for @filterErrorTypes.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading types: {error}'**
+  String filterErrorTypes(Object error);
 }
 
 class _AppLocalizationsDelegate

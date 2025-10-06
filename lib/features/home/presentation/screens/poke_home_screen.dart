@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
+import 'package:poke_app/features/home/presentation/notifiers/filter_types_notifier.dart';
 import 'package:poke_app/features/home/presentation/notifiers/home_notifier.dart';
 import 'package:poke_app/features/home/presentation/widgets/poke_list_card_widget.dart';
 import 'package:poke_app/shared/di/shared_providers.dart';
-import 'package:poke_app/shared/utils/poke_icons.dart';
-import 'package:poke_app/shared/widgets/poke_home_app_bar_widget.dart';
+import 'package:poke_app/features/home/presentation/widgets/poke_home_app_bar_widget.dart';
 import 'package:poke_app/styles/poke_styles.dart';
 
 /// HomeScreen displays a list of Pokémons and handles loading and error states.

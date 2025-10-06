@@ -36,4 +36,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeSearchHint => 'Search Pokémon...';
+
+  @override
+  String get filterTitle => 'Filter by your preferences';
+
+  @override
+  String get filterTypes => 'Types';
+
+  @override
+  String get filterApply => 'Apply';
+
+  @override
+  String get filterCancel => 'Cancel';
+
+  @override
+  String filterErrorTypes(Object error) {
+    return 'Error loading types: $error';
+  }
 }

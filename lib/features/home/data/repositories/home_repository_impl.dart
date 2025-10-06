@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:poke_app/features/home/data/datasources/home_datasource.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
+import 'package:poke_app/features/home/data/models/all_types_response.dart';
 import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
 import 'package:poke_app/features/home/domain/repositories/home_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -45,6 +46,24 @@ class HomeRepositoryImpl implements HomeRepository {
       throw Exception('Network error: \\${dioError.message}');
     } catch (e) {
       throw Exception('Failed to fetch Pokemon detail: \\${e.toString()}');
+    }
+  }
+
+  /// Fetches all Pokemon types from the data source.
+  /// Throws an [Exception] if no types are found or if the request fails.
+  @override
+  Future<AllTypesResponse> getAllTypes() async {
+    try {
+      final allTypes = await _homeDatasource.getAllTypes();
+      if (allTypes.results.isNotEmpty) {
+        return allTypes;
+      } else {
+        throw Exception('No types found');
+      }
+    } on DioException catch (dioError) {
+      throw Exception('Network error: \\${dioError.message}');
+    } catch (e) {
+      throw Exception('Failed to fetch types: \\${e.toString()}');
     }
   }
 }
