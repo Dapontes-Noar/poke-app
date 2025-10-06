@@ -28,6 +28,9 @@ class _PokeText {
   late final TextStyle noFavoritesTitle;
   late final TextStyle noFavoritesDescription;
   late final TextStyle pokeAppBarTitle;
+  late final TextStyle homeAppBarSearchHint;
+  late final TextStyle homeAppBarSearchInput;
+  late final TextStyle homeAppBarActionIcon;
 
   _PokeText() {
     pokeIDText = TextStyle(
@@ -96,6 +99,24 @@ class _PokeText {
       fontFamily: fontFamily,
       color: $pokeStyles.colors.pokeNameColor,
     );
+    homeAppBarSearchHint = TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 14,
+      color: $pokeStyles.colors.appBarSearchBorderColor,
+      fontWeight: FontWeight.w400,
+    );
+    homeAppBarSearchInput = TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 14,
+      color: $pokeStyles.colors.pokeNameColor,
+      fontWeight: FontWeight.w400,
+    );
+    homeAppBarActionIcon = TextStyle(
+      color: $pokeStyles.colors.appBarSearchBorderColor,
+      fontSize: 20,
+      fontWeight: FontWeight.w400,
+      fontFamily: fontFamily,
+    );
   }
 }
 
@@ -107,6 +128,18 @@ class _PokePadding {
   final double pokeChipHorizontal = 6.0;
   final double pokefavoriteButton = 8.0;
   final double typeChipAvatar = 3.0;
+
+  late final EdgeInsets homeAppBarTitlePadding;
+  late final EdgeInsets homeAppBarActionPadding;
+  late final EdgeInsets homeAppBarSearchPadding;
+  late final BorderRadius homeAppBarActionBorderRadius;
+  late final BorderSide homeAppBarActionBorderSide;
+
+  _PokePadding() {
+    homeAppBarTitlePadding = const EdgeInsets.only(left: 8.0, top: 22);
+    homeAppBarActionPadding = const EdgeInsets.only(top: 22.0);
+    homeAppBarSearchPadding = const EdgeInsets.symmetric(horizontal: 16.0);
+  }
 }
 
 /// Container and shape styles.
@@ -118,6 +151,9 @@ class _PokeContainer {
   final EdgeInsets bottomNavigationBarPadding;
   final BorderRadius bottomNavigationBarRadius;
   final List<BoxShadow> bottomNavigationBarShadow;
+
+  late final RoundedRectangleBorder homeAppBarActionBorderRadius;
+  late final BorderSide homeAppBarActionBorderSide;
 
   _PokeContainer(_PokeBorder border)
     : pokeCard = BoxDecoration(
@@ -155,7 +191,14 @@ class _PokeContainer {
           blurRadius: 3,
           offset: const Offset(0, -5),
         ),
-      ];
+      ],
+      homeAppBarActionBorderRadius = RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      homeAppBarActionBorderSide = BorderSide(
+        color: $pokeStyles.colors.appBarSearchBorderColor,
+        width: 1.5,
+      );
 }
 
 /// Border and radius styles.

@@ -145,6 +145,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Click the heart icon on your favorite Pokémon and they will appear here.'**
   String get noFavoritesDescription;
+
+  /// No description provided for @homeSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Pokémon...'**
+  String get homeSearchHint;
 }
 
 class _AppLocalizationsDelegate

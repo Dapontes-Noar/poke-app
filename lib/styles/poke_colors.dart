@@ -6,6 +6,7 @@ class PokeColors {
   final Color bottomNavigationLabelSelectColor = const Color(0xFF0D47A1);
   final Color bottomNavigationLabelUnselectColor = const Color(0xFF424242);
   final Color deleteSwipeColor = const Color(0xFFCD3131);
+  final Color appBarSearchBorderColor = const Color(0xFFE0E0E0);
 
   /// Card colors
   final Color pokeIDColor = const Color(0xFF424242);

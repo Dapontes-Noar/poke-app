@@ -33,4 +33,7 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get noFavoritesDescription =>
       'Haz clic en el ícono de corazón de tus Pokémon favoritos y aparecerán aquí.';
+
+  @override
+  String get homeSearchHint => 'Buscar Pokémon...';
 }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:poke_app/core/utils/extensions/context_extensions.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
 import 'package:poke_app/features/home/presentation/notifiers/home_notifier.dart';
 import 'package:poke_app/features/home/presentation/widgets/poke_list_card_widget.dart';
 import 'package:poke_app/shared/di/shared_providers.dart';
+import 'package:poke_app/shared/utils/poke_icons.dart';
+import 'package:poke_app/shared/widgets/poke_home_app_bar_widget.dart';
 import 'package:poke_app/styles/poke_styles.dart';
 
 /// HomeScreen displays a list of Pokémons and handles loading and error states.
@@ -44,7 +45,7 @@ class _HomeScreenState extends ConsumerState<PokeHomeScreen> {
       }
     });
     return Scaffold(
-      appBar: AppBar(title: Text(context.l10n.homeTitle)),
+      appBar: PokeHomeAppBarWidget(),
       backgroundColor: $pokeStyles.colors.scaffoldBgColor,
       bottomNavigationBar: bottomNavBar,
       body: asyncPokemons.when(
@@ -54,7 +55,7 @@ class _HomeScreenState extends ConsumerState<PokeHomeScreen> {
           }
           return ListView.builder(
             itemCount: data.results.length,
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
             itemBuilder: (context, index) {
               final pokemon = data.results[index];
               return PokeListCardWidget(pokemonName: pokemon.name);
