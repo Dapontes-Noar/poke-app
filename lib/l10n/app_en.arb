@@ -16,5 +16,8 @@
   "filterErrorTypes": "Error loading types: {error}",
   "filterFoundPrefix": "Found ",
   "filterFoundResults": "{count} results",
-  "filterClear": "Clear filter"
+  "filterClear": "Clear filter",
+  "generalErrorTitle": "Something went wrong...",
+  "generalErrorDescription": "We couldn't load the information at this time. Please check your connection or try again later.",
+  "generalErrorRetry": "Retry"
 }

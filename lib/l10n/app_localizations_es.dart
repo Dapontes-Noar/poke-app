@@ -64,4 +64,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get filterClear => 'Borrar filtro';
+
+  @override
+  String get generalErrorTitle => 'Algo salió mal...';
+
+  @override
+  String get generalErrorDescription =>
+      'No pudimos cargar la información en este momento. Verifica tu conexión o intenta nuevamente más tarde.';
+
+  @override
+  String get generalErrorRetry => 'Reintentar';
 }

@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:poke_app/core/errors/error_messages.dart';
 import 'package:poke_app/core/di/di_providers.dart';
+import 'package:poke_app/core/errors/pokemon_exceptions.dart';
 import 'package:poke_app/core/network/dio_client.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
 import 'package:poke_app/features/home/data/models/all_types_response.dart';
@@ -33,7 +36,6 @@ abstract class HomeDatasource {
 
 class HomeDatasourceImpl implements HomeDatasource {
   final DioClient _dioClient;
-  static const String _endpoint = 'pokemon/';
 
   HomeDatasourceImpl(this._dioClient);
 
@@ -45,16 +47,24 @@ class HomeDatasourceImpl implements HomeDatasource {
   }) async {
     try {
       return await _dioClient.get<AllPokemonsResponse>(
-        _endpoint,
+        'pokemon/',
         queryParameters: queryParameters,
         fromJson: (data) => AllPokemonsResponse.fromJson(data),
       );
-    } on DioException catch (dioError) {
-      // Optionally log dioError
-      throw Exception('Network error: \\${dioError.message}');
-    } catch (e) {
-      // Optionally log the error
-      throw Exception('Failed to fetch Pokemons: \\${e.toString()}');
+    } on DioException catch (dioError, st) {
+      debugPrint('Network error in getAllPokemons $dioError, $st');
+      throw PokemonNetworkException(
+        ErrorMessages.networkError,
+        originalError: dioError,
+        stackTrace: st,
+      );
+    } catch (e, st) {
+      debugPrint('API error in getAllPokemons $e, $st');
+      throw PokemonApiException(
+        ErrorMessages.fetchPokemonsFailed,
+        originalError: e,
+        stackTrace: st,
+      );
     }
   }
 
@@ -67,10 +77,20 @@ class HomeDatasourceImpl implements HomeDatasource {
         'pokemon/$nameOrId',
         fromJson: (data) => PokemonDetailResponse.fromJson(data),
       );
-    } on DioException catch (dioError) {
-      throw Exception('Network error: \\${dioError.message}');
-    } catch (e) {
-      throw Exception('Failed to fetch Pokemon detail: \\${e.toString()}');
+    } on DioException catch (dioError, st) {
+      debugPrint('Network error in getPokemonDetail $dioError, $st');
+      throw PokemonNetworkException(
+        ErrorMessages.networkError,
+        originalError: dioError,
+        stackTrace: st,
+      );
+    } catch (e, st) {
+      debugPrint('API error in getPokemonDetail $e, $st');
+      throw PokemonApiException(
+        ErrorMessages.fetchPokemonDetailFailed,
+        originalError: e,
+        stackTrace: st,
+      );
     }
   }
 
@@ -83,10 +103,20 @@ class HomeDatasourceImpl implements HomeDatasource {
         'type/',
         fromJson: (data) => AllTypesResponse.fromJson(data),
       );
-    } on DioException catch (dioError) {
-      throw Exception('Network error: ${dioError.message}');
-    } catch (e) {
-      throw Exception('Failed to fetch types: ${e.toString()}');
+    } on DioException catch (dioError, st) {
+      debugPrint('Network error in getAllTypes $dioError, $st');
+      throw PokemonNetworkException(
+        ErrorMessages.networkError,
+        originalError: dioError,
+        stackTrace: st,
+      );
+    } catch (e, st) {
+      debugPrint('API error in getAllTypes $e, $st');
+      throw PokemonApiException(
+        ErrorMessages.fetchTypesFailed,
+        originalError: e,
+        stackTrace: st,
+      );
     }
   }
 
@@ -99,10 +129,20 @@ class HomeDatasourceImpl implements HomeDatasource {
         'type/$name',
         fromJson: (data) => PokemonsByTypeResponse.fromJson(data),
       );
-    } on DioException catch (dioError) {
-      throw Exception('Network error: ${dioError.message}');
-    } catch (e) {
-      throw Exception('Failed to fetch pokemons by type: ${e.toString()}');
+    } on DioException catch (dioError, st) {
+      debugPrint('Network error in getPokemonsByType $dioError, $st');
+      throw PokemonNetworkException(
+        ErrorMessages.networkError,
+        originalError: dioError,
+        stackTrace: st,
+      );
+    } catch (e, st) {
+      debugPrint('API error in getPokemonsByType $e, $st');
+      throw PokemonApiException(
+        ErrorMessages.fetchPokemonsByTypeFailed,
+        originalError: e,
+        stackTrace: st,
+      );
     }
   }
 }

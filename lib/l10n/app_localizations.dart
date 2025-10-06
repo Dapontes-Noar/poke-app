@@ -199,6 +199,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Clear filter'**
   String get filterClear;
+
+  /// No description provided for @generalErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong...'**
+  String get generalErrorTitle;
+
+  /// No description provided for @generalErrorDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t load the information at this time. Please check your connection or try again later.'**
+  String get generalErrorDescription;
+
+  /// No description provided for @generalErrorRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get generalErrorRetry;
 }
 
 class _AppLocalizationsDelegate

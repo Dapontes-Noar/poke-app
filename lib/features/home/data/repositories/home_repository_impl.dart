@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:poke_app/core/errors/error_messages.dart';
 import 'package:poke_app/features/home/data/datasources/home_datasource.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
 import 'package:poke_app/features/home/data/models/all_types_response.dart';
@@ -28,12 +30,15 @@ class HomeRepositoryImpl implements HomeRepository {
       if (allPokemons.results.isNotEmpty) {
         return allPokemons;
       } else {
-        throw Exception('No Pokemons found');
+        debugPrint('No Pokemons found in getAllPokemons');
+        throw Exception(ErrorMessages.noPokemonsFound);
       }
-    } on DioException catch (dioError) {
-      throw Exception('Network error: \\${dioError.message}');
-    } catch (e) {
-      throw Exception('Failed to fetch Pokemons: \\${e.toString()}');
+    } on DioException catch (dioError, st) {
+      debugPrint('Network error in getAllPokemons $dioError, $st');
+      throw Exception(ErrorMessages.networkError);
+    } catch (e, st) {
+      debugPrint('API error in getAllPokemons $e, $st');
+      throw Exception(ErrorMessages.fetchPokemonsFailed);
     }
   }
 
@@ -43,10 +48,12 @@ class HomeRepositoryImpl implements HomeRepository {
   Future<PokemonDetailResponse> getPokemonDetail(String nameOrId) async {
     try {
       return await _homeDatasource.getPokemonDetail(nameOrId);
-    } on DioException catch (dioError) {
-      throw Exception('Network error: \\${dioError.message}');
-    } catch (e) {
-      throw Exception('Failed to fetch Pokemon detail: \\${e.toString()}');
+    } on DioException catch (dioError, st) {
+      debugPrint('Network error in getPokemonDetail $dioError, $st');
+      throw Exception(ErrorMessages.networkError);
+    } catch (e, st) {
+      debugPrint('API error in getPokemonDetail $e, $st');
+      throw Exception(ErrorMessages.fetchPokemonDetailFailed);
     }
   }
 
@@ -59,12 +66,15 @@ class HomeRepositoryImpl implements HomeRepository {
       if (allTypes.results.isNotEmpty) {
         return allTypes;
       } else {
-        throw Exception('No types found');
+        debugPrint('No types found in getAllTypes');
+        throw Exception(ErrorMessages.noTypesFound);
       }
-    } on DioException catch (dioError) {
-      throw Exception('Network error: \\${dioError.message}');
-    } catch (e) {
-      throw Exception('Failed to fetch types: \\${e.toString()}');
+    } on DioException catch (dioError, st) {
+      debugPrint('Network error in getAllTypes $dioError, $st');
+      throw Exception(ErrorMessages.networkError);
+    } catch (e, st) {
+      debugPrint('API error in getAllTypes $e, $st');
+      throw Exception(ErrorMessages.fetchTypesFailed);
     }
   }
 
@@ -77,12 +87,15 @@ class HomeRepositoryImpl implements HomeRepository {
       if (pokemonsByType.pokemon.isNotEmpty) {
         return pokemonsByType;
       } else {
-        throw Exception('No Pokemons found for type $name');
+        debugPrint('No Pokemons found for type $name in getPokemonsByType');
+        throw Exception(ErrorMessages.noPokemonsFoundForType);
       }
-    } on DioException catch (dioError) {
-      throw Exception('Network error: \\${dioError.message}');
-    } catch (e) {
-      throw Exception('Failed to fetch Pokemons by type: \\${e.toString()}');
+    } on DioException catch (dioError, st) {
+      debugPrint('Network error in getPokemonsByType $dioError, $st');
+      throw Exception(ErrorMessages.networkError);
+    } catch (e, st) {
+      debugPrint('API error in getPokemonsByType $e, $st');
+      throw Exception(ErrorMessages.fetchPokemonsByTypeFailed);
     }
   }
 }

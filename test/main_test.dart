@@ -1,13 +1,34 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:poke_app/main.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:poke_app/main.dart';
+import 'package:poke_app/routes/app_router.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
-  testWidgets('MyApp widget is present in the widget tree', (
-    WidgetTester tester,
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  testWidgets('MyApp builds correctly and contains a MaterialApp.router', (
+    tester,
   ) async {
-    await tester.pumpWidget(ProviderScope(child: MyApp()));
-    await tester.pumpAndSettle(const Duration(seconds: 2));
-    expect(find.byType(MyApp), findsOneWidget);
+    final fakeRouter = GoRouter(
+      routes: [GoRoute(path: '/', builder: (_, _) => const Placeholder())],
+    );
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [buildAppRouterProvider.overrideWithValue(fakeRouter)],
+        child: const MyApp(),
+      ),
+    );
+
+    await tester.pumpAndSettle();
+
+    final materialAppFinder = find.byType(MaterialApp);
+    expect(materialAppFinder, findsOneWidget);
+
+    expect(tester.takeException(), isNull);
+
+    expect(find.byType(Placeholder), findsOneWidget);
   });
 }

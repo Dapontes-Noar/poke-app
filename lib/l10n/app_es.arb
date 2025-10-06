@@ -16,5 +16,8 @@
   "filterErrorTypes": "Error al cargar los tipos: {error}",
   "filterFoundPrefix": "Se han encontrado ",
   "filterFoundResults": "{count} resultados",
-  "filterClear": "Borrar filtro"
+  "filterClear": "Borrar filtro",
+  "generalErrorTitle": "Algo salió mal...",
+  "generalErrorDescription": "No pudimos cargar la información en este momento. Verifica tu conexión o intenta nuevamente más tarde.",
+  "generalErrorRetry": "Reintentar"
 }
