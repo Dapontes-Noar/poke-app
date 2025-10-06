@@ -35,7 +35,11 @@ class PokeCardImageWidget extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
-          const Positioned(top: 4, right: 4, child: PokeFavoriteButtonWidget()),
+          Positioned(
+            top: 4,
+            right: 4,
+            child: PokeFavoriteButtonWidget(pokemonName: pokemon.name),
+          ),
         ],
       ),
     );

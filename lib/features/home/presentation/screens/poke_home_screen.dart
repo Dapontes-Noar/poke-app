@@ -57,7 +57,7 @@ class _HomeScreenState extends ConsumerState<PokeHomeScreen> {
             padding: const EdgeInsets.all(16),
             itemBuilder: (context, index) {
               final pokemon = data.results[index];
-              return PokeListCardWidget(pokemonUrl: pokemon.name);
+              return PokeListCardWidget(pokemonName: pokemon.name);
             },
           );
         },

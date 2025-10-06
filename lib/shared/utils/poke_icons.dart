@@ -30,4 +30,6 @@ class PokeIcons {
             ? ColorFilter.mode(color, BlendMode.srcIn)
             : null,
       );
+
+  static final deleteIcon = PokeIconsConstants.deleteIcon.toIconSvgAsset();
 }

@@ -10,13 +10,13 @@ import 'package:poke_app/styles/poke_styles.dart';
 import 'poke_card_image_widget.dart';
 
 class PokeListCardWidget extends ConsumerWidget {
-  final String pokemonUrl;
+  final String pokemonName;
 
-  const PokeListCardWidget({super.key, required this.pokemonUrl});
+  const PokeListCardWidget({super.key, required this.pokemonName});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pokemonDetailAsync = ref.watch(pokeDetailsProvider(pokemonUrl));
+    final pokemonDetailAsync = ref.watch(pokeDetailsProvider(pokemonName));
     return pokemonDetailAsync.when(
       data: (PokemonDetailResponse pokemon) {
         return AspectRatio(

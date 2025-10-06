@@ -27,6 +27,7 @@ class _PokeText {
   late final TextStyle bottomNavigationLabelUnselected;
   late final TextStyle noFavoritesTitle;
   late final TextStyle noFavoritesDescription;
+  late final TextStyle pokeAppBarTitle;
 
   _PokeText() {
     pokeIDText = TextStyle(
@@ -88,6 +89,12 @@ class _PokeText {
       color: $pokeStyles.colors.bottomNavigationLabelUnselectColor,
       fontFamily: fontFamily,
       fontWeight: FontWeight.w500,
+    );
+    pokeAppBarTitle = TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      fontFamily: fontFamily,
+      color: $pokeStyles.colors.pokeNameColor,
     );
   }
 }
