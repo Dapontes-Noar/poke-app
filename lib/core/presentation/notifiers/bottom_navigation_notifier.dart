@@ -31,7 +31,7 @@ class BottomNavigationNotifier extends _$BottomNavigationNotifier {
     if (index == state) return;
     state = index;
     final route = _routes[index];
-    _router.go(route);
+    _router.push(route);
   }
 
   void _syncOnRouterChange() {

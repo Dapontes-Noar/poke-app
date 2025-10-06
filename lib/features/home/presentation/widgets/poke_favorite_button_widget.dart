@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:poke_app/features/favorites/presentation/notifiers/favorites_notifier.dart';
 import 'package:poke_app/styles/poke_styles.dart';
 
-class PokeFavoriteButtonWidget extends StatefulWidget {
-  const PokeFavoriteButtonWidget({super.key});
+class PokeFavoriteButtonWidget extends ConsumerStatefulWidget {
+  final String pokemonName;
+
+  const PokeFavoriteButtonWidget({required this.pokemonName, super.key});
 
   @override
-  State<PokeFavoriteButtonWidget> createState() =>
+  ConsumerState<PokeFavoriteButtonWidget> createState() =>
       _PokeFavoriteButtonWidgetState();
 }
 
-class _PokeFavoriteButtonWidgetState extends State<PokeFavoriteButtonWidget> {
-  bool _isFavorite = false;
-
-  void _toggleFavorite() {
-    setState(() {
-      _isFavorite = !_isFavorite;
-    });
-  }
-
+class _PokeFavoriteButtonWidgetState
+    extends ConsumerState<PokeFavoriteButtonWidget> {
   @override
   Widget build(BuildContext context) {
+    final favoriteState = ref.watch(favoritesProvider);
+    final favoriteNotifier = ref.read(favoritesProvider.notifier);
+    final isFavorite = favoriteNotifier.isFavorite(widget.pokemonName);
+    favoriteState.whenData((favorites) {
+      if (isFavorite) {
+        setState(() {});
+      }
+    });
     return Padding(
       padding: EdgeInsets.all($pokeStyles.padding.pokefavoriteButton),
       child: IconButton(
@@ -42,10 +47,12 @@ class _PokeFavoriteButtonWidgetState extends State<PokeFavoriteButtonWidget> {
           ),
         ),
         icon: Icon(
-          _isFavorite ? Icons.favorite : Icons.favorite_border,
-          color: _isFavorite ? Colors.red : Colors.white,
+          isFavorite ? Icons.favorite : Icons.favorite_border,
+          color: isFavorite ? Colors.red : Colors.white,
         ),
-        onPressed: _toggleFavorite,
+        onPressed: () {
+          favoriteNotifier.toggleFavorite(widget.pokemonName);
+        },
       ),
     );
   }
