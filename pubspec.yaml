@@ -90,7 +90,7 @@ flutter:
           weight: 300
         - asset: assets/fonts/Poppins-Medium.ttf
           weight: 500
-        - asset: assets/fonts/Poppins-regular.ttf
+        - asset: assets/fonts/Poppins-Regular.ttf
           weight: 400
         - asset: assets/fonts/Poppins-SemiBold.ttf
           weight: 600
