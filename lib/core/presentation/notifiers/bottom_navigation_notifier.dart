@@ -35,7 +35,7 @@ class BottomNavigationNotifier extends _$BottomNavigationNotifier {
   }
 
   void _syncOnRouterChange() {
-    syncWithRoute(_router.state.matchedLocation ?? '');
+    syncWithRoute(_router.state.matchedLocation);
   }
 
   void syncWithRoute(String location) {
