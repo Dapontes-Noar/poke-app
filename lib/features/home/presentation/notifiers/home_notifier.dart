@@ -8,7 +8,6 @@ import 'package:poke_app/features/home/presentation/notifiers/filter_types_notif
 
 /// Notifier for managing the state of all Pokemons in the home screen.
 class HomeNotifier extends AsyncNotifier<AllPokemonsResponse> {
-
   Future<void> updateAllPokemons() async {
     final filterProvider = ref.read(filterTypesProvider);
     if (filterProvider.value?.selectedTypes != null &&

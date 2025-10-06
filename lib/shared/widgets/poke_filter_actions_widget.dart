@@ -54,14 +54,10 @@ class PokeFilterActionsWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 14),
             ),
             onPressed: onCancel,
-            child: Text(
-              cancelLabel,
-              style: $pokeStyles.text.pokeButtonLabel,
-            ),
+            child: Text(cancelLabel, style: $pokeStyles.text.pokeButtonLabel),
           ),
         ),
       ],
     );
   }
 }
-

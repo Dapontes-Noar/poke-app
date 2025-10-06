@@ -19,10 +19,7 @@ class PokeFilterHeaderWidget extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.topLeft,
-          child: IconButton(
-            icon: const Icon(Icons.close),
-            onPressed: onClose,
-          ),
+          child: IconButton(icon: const Icon(Icons.close), onPressed: onClose),
         ),
         Text(
           title,

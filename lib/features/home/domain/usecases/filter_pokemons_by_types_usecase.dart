@@ -26,7 +26,9 @@ class FilterPokemonsByTypesUsecase {
       for (final pokemonsByTypeResponse in results) {
         if (pokemonsByTypeResponse.pokemon.isNotEmpty) {
           filteredPokemons.addAll(
-            pokemonsByTypeResponse.pokemon.map((typeResponse) => typeResponse.pokemon),
+            pokemonsByTypeResponse.pokemon.map(
+              (typeResponse) => typeResponse.pokemon,
+            ),
           );
         }
       }
