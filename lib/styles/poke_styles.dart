@@ -25,9 +25,17 @@ class _PokeText {
   late final TextStyle comingSoonDescription;
   late final TextStyle bottomNavigationLabelSelected;
   late final TextStyle bottomNavigationLabelUnselected;
-  late final TextStyle noFavoritesTitle;
+  late final TextStyle pokeAppTitle;
+  late final TextStyle pokeSubTitleIcon;
   late final TextStyle noFavoritesDescription;
   late final TextStyle pokeAppBarTitle;
+  late final TextStyle homeAppBarSearchHint;
+  late final TextStyle homeAppBarSearchInput;
+  late final TextStyle homeAppBarActionIcon;
+  late final TextStyle filterOptionsLabel;
+  late final TextStyle pokeButtonLabel;
+  late final TextStyle navBarFilterLabel;
+  late final TextStyle navBarFilterCleanLabel;
 
   _PokeText() {
     pokeIDText = TextStyle(
@@ -66,7 +74,7 @@ class _PokeText {
       fontWeight: FontWeight.w400,
       fontFamily: fontFamily,
     );
-    noFavoritesTitle = TextStyle(
+    pokeAppTitle = TextStyle(
       color: $pokeStyles.colors.pokeNameColor,
       fontSize: 20,
       fontWeight: FontWeight.w600,
@@ -96,6 +104,55 @@ class _PokeText {
       fontFamily: fontFamily,
       color: $pokeStyles.colors.pokeNameColor,
     );
+    homeAppBarSearchHint = TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 14,
+      color: $pokeStyles.colors.appBarSearchBorderColor,
+      fontWeight: FontWeight.w400,
+    );
+    homeAppBarSearchInput = TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 14,
+      color: $pokeStyles.colors.pokeNameColor,
+      fontWeight: FontWeight.w400,
+    );
+    homeAppBarActionIcon = TextStyle(
+      color: $pokeStyles.colors.appBarSearchBorderColor,
+      fontSize: 20,
+      fontWeight: FontWeight.w400,
+      fontFamily: fontFamily,
+    );
+    pokeSubTitleIcon = TextStyle(
+      color: $pokeStyles.colors.pokeNameColor,
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      fontFamily: fontFamily,
+    );
+    filterOptionsLabel = TextStyle(
+      fontSize: 14,
+      color: $pokeStyles.colors.filterLabelColor,
+      fontFamily: fontFamily,
+      fontWeight: FontWeight.w500,
+    );
+    pokeButtonLabel = TextStyle(
+      color: $pokeStyles.colors.pokeNameColor,
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      fontFamily: fontFamily,
+    );
+    navBarFilterLabel = TextStyle(
+      fontSize: 14,
+      color: $pokeStyles.colors.filterLabelColor,
+      fontFamily: fontFamily,
+      fontWeight: FontWeight.w700,
+    );
+    navBarFilterCleanLabel = TextStyle(
+      decoration: TextDecoration.underline,
+      fontSize: 14,
+      color: $pokeStyles.colors.filterPrimaryButtonColor,
+      fontFamily: fontFamily,
+      fontWeight: FontWeight.w500,
+    );
   }
 }
 
@@ -107,6 +164,18 @@ class _PokePadding {
   final double pokeChipHorizontal = 6.0;
   final double pokefavoriteButton = 8.0;
   final double typeChipAvatar = 3.0;
+
+  late final EdgeInsets homeAppBarTitlePadding;
+  late final EdgeInsets homeAppBarActionPadding;
+  late final EdgeInsets homeAppBarSearchPadding;
+  late final BorderRadius homeAppBarActionBorderRadius;
+  late final BorderSide homeAppBarActionBorderSide;
+
+  _PokePadding() {
+    homeAppBarTitlePadding = const EdgeInsets.only(left: 8.0, top: 22);
+    homeAppBarActionPadding = const EdgeInsets.only(top: 22.0);
+    homeAppBarSearchPadding = const EdgeInsets.symmetric(horizontal: 16.0);
+  }
 }
 
 /// Container and shape styles.
@@ -118,6 +187,9 @@ class _PokeContainer {
   final EdgeInsets bottomNavigationBarPadding;
   final BorderRadius bottomNavigationBarRadius;
   final List<BoxShadow> bottomNavigationBarShadow;
+
+  late final RoundedRectangleBorder homeAppBarActionBorderRadius;
+  late final BorderSide homeAppBarActionBorderSide;
 
   _PokeContainer(_PokeBorder border)
     : pokeCard = BoxDecoration(
@@ -155,7 +227,14 @@ class _PokeContainer {
           blurRadius: 3,
           offset: const Offset(0, -5),
         ),
-      ];
+      ],
+      homeAppBarActionBorderRadius = RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      homeAppBarActionBorderSide = BorderSide(
+        color: $pokeStyles.colors.appBarSearchBorderColor,
+        width: 1.5,
+      );
 }
 
 /// Border and radius styles.

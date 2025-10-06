@@ -32,4 +32,5 @@ class PokeIcons {
       );
 
   static final deleteIcon = PokeIconsConstants.deleteIcon.toIconSvgAsset();
+  static final searchIcon = PokeIconsConstants.searchIcon.toIconSvgAsset();
 }

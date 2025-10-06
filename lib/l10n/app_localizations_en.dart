@@ -33,4 +33,35 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get noFavoritesDescription =>
       'Click the heart icon on your favorite Pokémon and they will appear here.';
+
+  @override
+  String get homeSearchHint => 'Search Pokémon...';
+
+  @override
+  String get filterTitle => 'Filter by your preferences';
+
+  @override
+  String get filterTypes => 'Types';
+
+  @override
+  String get filterApply => 'Apply';
+
+  @override
+  String get filterCancel => 'Cancel';
+
+  @override
+  String filterErrorTypes(Object error) {
+    return 'Error loading types: $error';
+  }
+
+  @override
+  String get filterFoundPrefix => 'Found ';
+
+  @override
+  String filterFoundResults(Object count) {
+    return '$count results';
+  }
+
+  @override
+  String get filterClear => 'Clear filter';
 }

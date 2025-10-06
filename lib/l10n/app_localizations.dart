@@ -145,6 +145,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Click the heart icon on your favorite Pokémon and they will appear here.'**
   String get noFavoritesDescription;
+
+  /// No description provided for @homeSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Pokémon...'**
+  String get homeSearchHint;
+
+  /// No description provided for @filterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by your preferences'**
+  String get filterTitle;
+
+  /// No description provided for @filterTypes.
+  ///
+  /// In en, this message translates to:
+  /// **'Types'**
+  String get filterTypes;
+
+  /// No description provided for @filterApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get filterApply;
+
+  /// No description provided for @filterCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get filterCancel;
+
+  /// No description provided for @filterErrorTypes.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading types: {error}'**
+  String filterErrorTypes(Object error);
+
+  /// No description provided for @filterFoundPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Found '**
+  String get filterFoundPrefix;
+
+  /// No description provided for @filterFoundResults.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} results'**
+  String filterFoundResults(Object count);
+
+  /// No description provided for @filterClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filter'**
+  String get filterClear;
 }
 
 class _AppLocalizationsDelegate

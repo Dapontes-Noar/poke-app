@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:poke_app/features/home/data/datasources/home_datasource.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
+import 'package:poke_app/features/home/data/models/all_types_response.dart';
 import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
+import 'package:poke_app/features/home/data/models/pokemons_by_type_response.dart';
 import 'package:poke_app/features/home/domain/repositories/home_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -45,6 +47,42 @@ class HomeRepositoryImpl implements HomeRepository {
       throw Exception('Network error: \\${dioError.message}');
     } catch (e) {
       throw Exception('Failed to fetch Pokemon detail: \\${e.toString()}');
+    }
+  }
+
+  /// Fetches all Pokemon types from the data source.
+  /// Throws an [Exception] if no types are found or if the request fails.
+  @override
+  Future<AllTypesResponse> getAllTypes() async {
+    try {
+      final allTypes = await _homeDatasource.getAllTypes();
+      if (allTypes.results.isNotEmpty) {
+        return allTypes;
+      } else {
+        throw Exception('No types found');
+      }
+    } on DioException catch (dioError) {
+      throw Exception('Network error: \\${dioError.message}');
+    } catch (e) {
+      throw Exception('Failed to fetch types: \\${e.toString()}');
+    }
+  }
+
+  /// Fetches all Pokemons of a specific type by its name.
+  /// Throws an [Exception] if no Pokemons are found for the type or if the request fails.
+  @override
+  Future<PokemonsByTypeResponse> getPokemonsByType(String name) async {
+    try {
+      final pokemonsByType = await _homeDatasource.getPokemonsByType(name);
+      if (pokemonsByType.pokemon.isNotEmpty) {
+        return pokemonsByType;
+      } else {
+        throw Exception('No Pokemons found for type $name');
+      }
+    } on DioException catch (dioError) {
+      throw Exception('Network error: \\${dioError.message}');
+    } catch (e) {
+      throw Exception('Failed to fetch Pokemons by type: \\${e.toString()}');
     }
   }
 }

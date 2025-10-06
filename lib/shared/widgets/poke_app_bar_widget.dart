@@ -21,7 +21,7 @@ class PokeAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       centerTitle: true,
       toolbarHeight: 84,
-      backgroundColor: Colors.transparent,
+      backgroundColor: $pokeStyles.colors.scaffoldBgColor,
       title: Text(title, style: $pokeStyles.text.pokeAppBarTitle),
       leading: showBackButton
           ? IconButton(

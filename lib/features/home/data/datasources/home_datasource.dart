@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:poke_app/core/di/di_providers.dart';
 import 'package:poke_app/core/network/dio_client.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
+import 'package:poke_app/features/home/data/models/all_types_response.dart';
 import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
+import 'package:poke_app/features/home/data/models/pokemons_by_type_response.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'home_datasource.g.dart';
@@ -16,9 +18,17 @@ abstract class HomeDatasource {
     Map<String, dynamic>? queryParameters,
   });
 
-  /// Fetches the detail of a single Pokemon by [nameOrId].
+  ///  Fetchess the detail of a single Pokemon by [nameOrId].
   /// Throws a [DioException] or [Exception] if the request fails.
   Future<PokemonDetailResponse> getPokemonDetail(String nameOrId);
+
+  /// Fetches all types from the API.
+  /// Throws a [DioException] or [Exception] if the request fails.
+  Future<AllTypesResponse> getAllTypes();
+
+  /// Fetches all pokemons of a specific type by [name].
+  /// Throws a [DioException] or [Exception] if the request fails.
+  Future<PokemonsByTypeResponse> getPokemonsByType(String name);
 }
 
 class HomeDatasourceImpl implements HomeDatasource {
@@ -61,6 +71,38 @@ class HomeDatasourceImpl implements HomeDatasource {
       throw Exception('Network error: \\${dioError.message}');
     } catch (e) {
       throw Exception('Failed to fetch Pokemon detail: \\${e.toString()}');
+    }
+  }
+
+  /// Fetches all types from the API.
+  /// Throws a [DioException] or [Exception] if the request fails.
+  @override
+  Future<AllTypesResponse> getAllTypes() async {
+    try {
+      return await _dioClient.get<AllTypesResponse>(
+        'type/',
+        fromJson: (data) => AllTypesResponse.fromJson(data),
+      );
+    } on DioException catch (dioError) {
+      throw Exception('Network error: ${dioError.message}');
+    } catch (e) {
+      throw Exception('Failed to fetch types: ${e.toString()}');
+    }
+  }
+
+  /// Fetches all pokemons of a specific type by [name].
+  /// Throws a [DioException] or [Exception] if the request fails.
+  @override
+  Future<PokemonsByTypeResponse> getPokemonsByType(String name) async {
+    try {
+      return await _dioClient.get<PokemonsByTypeResponse>(
+        'type/$name',
+        fromJson: (data) => PokemonsByTypeResponse.fromJson(data),
+      );
+    } on DioException catch (dioError) {
+      throw Exception('Network error: ${dioError.message}');
+    } catch (e) {
+      throw Exception('Failed to fetch pokemons by type: ${e.toString()}');
     }
   }
 }

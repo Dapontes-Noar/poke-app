@@ -7,5 +7,14 @@
   "regionsComingSoonTitle": "¡Muy pronto disponible!",
   "regionsComingSoonDescription": "Estamos trabajando para traerte esta sección. Vuelve más adelante para descubrir todas las novedades.",
   "noFavoritesTitle": "No has marcado ningún Pokémon como favorito",
-  "noFavoritesDescription": "Haz clic en el ícono de corazón de tus Pokémon favoritos y aparecerán aquí."
+  "noFavoritesDescription": "Haz clic en el ícono de corazón de tus Pokémon favoritos y aparecerán aquí.",
+  "homeSearchHint": "Buscar Pokémon...",
+  "filterTitle": "Filtra por tus preferencias",
+  "filterTypes": "Tipos",
+  "filterApply": "Aplicar",
+  "filterCancel": "Cancelar",
+  "filterErrorTypes": "Error al cargar los tipos: {error}",
+  "filterFoundPrefix": "Se han encontrado ",
+  "filterFoundResults": "{count} resultados",
+  "filterClear": "Borrar filtro"
 }
