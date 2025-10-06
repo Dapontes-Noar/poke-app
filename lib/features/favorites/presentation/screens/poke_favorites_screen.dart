@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:poke_app/core/utils/extensions/context_extensions.dart';
 import 'package:poke_app/features/favorites/presentation/notifiers/favorites_notifier.dart';
@@ -7,6 +6,7 @@ import 'package:poke_app/features/favorites/presentation/widgets/poke_no_favorit
 import 'package:poke_app/features/home/presentation/widgets/poke_list_card_widget.dart';
 import 'package:poke_app/shared/di/shared_providers.dart';
 import 'package:poke_app/shared/utils/poke_icons.dart';
+import 'package:poke_app/shared/widgets/poke_app_bar_widget.dart';
 import 'package:poke_app/styles/poke_styles.dart';
 
 class PokeFavoritesScreen extends ConsumerWidget {
@@ -18,23 +18,7 @@ class PokeFavoritesScreen extends ConsumerWidget {
     final favoritesAsync = ref.watch(favoritesProvider);
     return Scaffold(
       bottomNavigationBar: bottomNavBar,
-      appBar: AppBar(
-        centerTitle: true,
-        toolbarHeight: 84,
-        backgroundColor: Colors.transparent,
-        title: Text(
-          context.l10n.favoritesTitle,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            fontFamily: 'Poppins',
-          ),
-        ),
-        leading: IconButton(
-          onPressed: () => context.canPop() ? context.pop() : null,
-          icon: const Icon(Icons.arrow_back_ios_new),
-        ),
-      ),
+      appBar: PokeAppBarWidget(title: context.l10n.favoritesTitle),
       body: favoritesAsync.when(
         data: (favorites) {
           if (favorites.isEmpty) {
