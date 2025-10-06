@@ -13,5 +13,8 @@
   "filterTypes": "Types",
   "filterApply": "Apply",
   "filterCancel": "Cancel",
-  "filterErrorTypes": "Error loading types: {error}"
+  "filterErrorTypes": "Error loading types: {error}",
+  "filterFoundPrefix": "Found ",
+  "filterFoundResults": "{count} results",
+  "filterClear": "Clear filter"
 }

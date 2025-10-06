@@ -81,7 +81,11 @@ class _HomeScreenState extends ConsumerState<PokeHomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ref.read(homeNotifierProvider.notifier).fetchAllPokemons();
+          ref
+              .read(homeNotifierProvider.notifier)
+              .fetchPokemonsByFilter(
+                ref.read(filterTypesProvider).value?.selectedTypes ?? {},
+              );
         },
         child: const Icon(Icons.refresh),
       ),

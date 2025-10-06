@@ -13,5 +13,8 @@
   "filterTypes": "Tipos",
   "filterApply": "Aplicar",
   "filterCancel": "Cancelar",
-  "filterErrorTypes": "Error al cargar los tipos: {error}"
+  "filterErrorTypes": "Error al cargar los tipos: {error}",
+  "filterFoundPrefix": "Se han encontrado ",
+  "filterFoundResults": "{count} resultados",
+  "filterClear": "Borrar filtro"
 }

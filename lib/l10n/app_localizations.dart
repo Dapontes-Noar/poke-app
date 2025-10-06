@@ -181,6 +181,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error loading types: {error}'**
   String filterErrorTypes(Object error);
+
+  /// No description provided for @filterFoundPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Found '**
+  String get filterFoundPrefix;
+
+  /// No description provided for @filterFoundResults.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} results'**
+  String filterFoundResults(Object count);
+
+  /// No description provided for @filterClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filter'**
+  String get filterClear;
 }
 
 class _AppLocalizationsDelegate

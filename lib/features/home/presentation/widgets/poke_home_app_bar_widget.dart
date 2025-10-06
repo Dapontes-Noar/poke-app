@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:poke_app/core/utils/extensions/context_extensions.dart';
+import 'package:poke_app/features/home/domain/entities/filter_type_state.dart';
 import 'package:poke_app/features/home/presentation/notifiers/filter_types_notifier.dart';
+import 'package:poke_app/features/home/presentation/notifiers/home_notifier.dart';
 import 'package:poke_app/features/home/presentation/widgets/poke_have_filters_widget.dart';
 import 'package:poke_app/shared/widgets/poke_types_filter_widget.dart';
 import 'package:poke_app/shared/utils/poke_icons.dart';
@@ -14,6 +16,18 @@ class PokeHomeAppBarWidget extends ConsumerWidget
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final filterStateAsync = ref.watch(filterTypesProvider);
+    final homeNotifier = ref.read(homeNotifierProvider.notifier);
+    ref.listen<AsyncValue<FilterTypesState>>(filterTypesProvider, (
+      previous,
+      next,
+    ) {
+      final prevTypes = previous?.value?.selectedTypes ?? {};
+      final nextTypes = next.value?.selectedTypes ?? {};
+      if (prevTypes != nextTypes) {
+        homeNotifier.updateAllPokemons();
+      }
+    });
+
     final hasFilters = filterStateAsync.maybeWhen(
       data: (state) => state.selectedTypes.isNotEmpty,
       orElse: () => false,
@@ -70,7 +84,7 @@ class PokeHomeAppBarWidget extends ConsumerWidget
               ),
             ),
             visualDensity: VisualDensity.comfortable,
-            onPressed: () {
+            onPressed: () async {
               showModalBottomSheet(
                 context: context,
                 isScrollControlled: true,
@@ -83,7 +97,7 @@ class PokeHomeAppBarWidget extends ConsumerWidget
                   borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
                 ),
                 builder: (context) => PoketypesFilterWidget(),
-              ).whenComplete(() {});
+              );
             },
           ),
         ),
@@ -93,5 +107,5 @@ class PokeHomeAppBarWidget extends ConsumerWidget
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(100);
+  Size get preferredSize => const Size.fromHeight(120);
 }

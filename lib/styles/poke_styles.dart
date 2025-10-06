@@ -34,6 +34,8 @@ class _PokeText {
   late final TextStyle homeAppBarActionIcon;
   late final TextStyle filterOptionsLabel;
   late final TextStyle pokeButtonLabel;
+  late final TextStyle navBarFilterLabel;
+  late final TextStyle navBarFilterCleanLabel;
 
   _PokeText() {
     pokeIDText = TextStyle(
@@ -137,6 +139,19 @@ class _PokeText {
       fontSize: 18,
       fontWeight: FontWeight.w600,
       fontFamily: fontFamily,
+    );
+    navBarFilterLabel = TextStyle(
+      fontSize: 14,
+      color: $pokeStyles.colors.filterLabelColor,
+      fontFamily: fontFamily,
+      fontWeight: FontWeight.w700,
+    );
+    navBarFilterCleanLabel = TextStyle(
+      decoration: TextDecoration.underline,
+      fontSize: 14,
+      color: $pokeStyles.colors.filterPrimaryButtonColor,
+      fontFamily: fontFamily,
+      fontWeight: FontWeight.w500,
     );
   }
 }

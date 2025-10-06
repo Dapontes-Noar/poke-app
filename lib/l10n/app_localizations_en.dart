@@ -53,4 +53,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String filterErrorTypes(Object error) {
     return 'Error loading types: $error';
   }
+
+  @override
+  String get filterFoundPrefix => 'Found ';
+
+  @override
+  String filterFoundResults(Object count) {
+    return '$count results';
+  }
+
+  @override
+  String get filterClear => 'Clear filter';
 }
