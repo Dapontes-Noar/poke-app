@@ -21,6 +21,12 @@ class _PokeText {
   late final TextStyle pokeName;
   late final TextStyle typeChipLabel;
   late final TextStyle bottomNavigationLabel;
+  late final TextStyle comingSoonTitle;
+  late final TextStyle comingSoonDescription;
+  late final TextStyle bottomNavigationLabelSelected;
+  late final TextStyle bottomNavigationLabelUnselected;
+  late final TextStyle noFavoritesTitle;
+  late final TextStyle noFavoritesDescription;
 
   _PokeText() {
     pokeIDText = TextStyle(
@@ -47,6 +53,42 @@ class _PokeText {
       fontWeight: FontWeight.w700,
       fontFamily: fontFamily,
     );
+    comingSoonTitle = TextStyle(
+      color: $pokeStyles.colors.pokeNameColor,
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      fontFamily: fontFamily,
+    );
+    comingSoonDescription = TextStyle(
+      color: $pokeStyles.colors.pokeNameColor,
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      fontFamily: fontFamily,
+    );
+    noFavoritesTitle = TextStyle(
+      color: $pokeStyles.colors.pokeNameColor,
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      fontFamily: fontFamily,
+    );
+    noFavoritesDescription = TextStyle(
+      color: $pokeStyles.colors.pokeNameColor,
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      fontFamily: fontFamily,
+    );
+    bottomNavigationLabelSelected = TextStyle(
+      fontSize: 10,
+      color: $pokeStyles.colors.bottomNavigationLabelSelectColor,
+      fontFamily: fontFamily,
+      fontWeight: FontWeight.w700,
+    );
+    bottomNavigationLabelUnselected = TextStyle(
+      fontSize: 10,
+      color: $pokeStyles.colors.bottomNavigationLabelUnselectColor,
+      fontFamily: fontFamily,
+      fontWeight: FontWeight.w500,
+    );
   }
 }
 
@@ -66,6 +108,9 @@ class _PokeContainer {
   final BoxDecoration pokeCardAccent;
   final BoxDecoration typeChipAvatar;
   final BoxDecoration favoriteButton;
+  final EdgeInsets bottomNavigationBarPadding;
+  final BorderRadius bottomNavigationBarRadius;
+  final List<BoxShadow> bottomNavigationBarShadow;
 
   _PokeContainer(_PokeBorder border)
     : pokeCard = BoxDecoration(
@@ -87,7 +132,23 @@ class _PokeContainer {
           width: 2,
         ),
         shape: BoxShape.circle,
-      );
+      ),
+      bottomNavigationBarPadding = const EdgeInsets.symmetric(
+        vertical: 16.5,
+        horizontal: 16,
+      ),
+      bottomNavigationBarRadius = const BorderRadius.only(
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(20),
+      ),
+      bottomNavigationBarShadow = [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.1),
+          spreadRadius: 0,
+          blurRadius: 3,
+          offset: const Offset(0, -5),
+        ),
+      ];
 }
 
 /// Border and radius styles.

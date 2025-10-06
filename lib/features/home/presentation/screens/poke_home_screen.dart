@@ -5,6 +5,7 @@ import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
 import 'package:poke_app/features/home/presentation/notifiers/home_notifier.dart';
 import 'package:poke_app/features/home/presentation/widgets/poke_list_card_widget.dart';
 import 'package:poke_app/shared/di/shared_providers.dart';
+import 'package:poke_app/styles/poke_styles.dart';
 
 /// HomeScreen displays a list of Pokémons and handles loading and error states.
 class PokeHomeScreen extends ConsumerStatefulWidget {
@@ -44,6 +45,7 @@ class _HomeScreenState extends ConsumerState<PokeHomeScreen> {
     });
     return Scaffold(
       appBar: AppBar(title: Text(context.l10n.homeTitle)),
+      backgroundColor: $pokeStyles.colors.scaffoldBgColor,
       bottomNavigationBar: bottomNavBar,
       body: asyncPokemons.when(
         data: (AllPokemonsResponse data) {

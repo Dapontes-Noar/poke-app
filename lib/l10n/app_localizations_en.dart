@@ -19,4 +19,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileTitle => 'Profile';
+
+  @override
+  String get comingSoonTitle => 'Coming soon!';
+
+  @override
+  String get comingSoonDescription =>
+      'We are working to bring you this section. Come back later to discover all the news.';
+
+  @override
+  String get noFavoritesTitle => 'You haven\'t marked any Pokémon as favorite';
+
+  @override
+  String get noFavoritesDescription =>
+      'Click the heart icon on your favorite Pokémon and they will appear here.';
 }
