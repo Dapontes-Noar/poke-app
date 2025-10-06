@@ -7,7 +7,8 @@ class ErrorMessages {
   static const noPokemonsFound = 'No Pokemons found';
   static const noTypesFound = 'No types found';
   static const noPokemonsFoundForType = 'No Pokemons found for this type';
-  static const filterPokemonsByTypesFailed = 'Failed to filter Pokemons by types';
+  static const filterPokemonsByTypesFailed =
+      'Failed to filter Pokemons by types';
   static const getAllPokemonsUsecaseFailed = 'Failed to get all Pokemons';
   static const getAllTypesUsecaseFailed = 'Failed to get all Types';
 }

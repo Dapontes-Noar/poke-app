@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:poke_app/core/errors/error_messages.dart';
 import 'package:poke_app/core/di/di_providers.dart';
 import 'package:poke_app/core/errors/pokemon_exceptions.dart';
 import 'package:poke_app/core/network/dio_client.dart';
-import 'package:poke_app/core/errors/logging.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
 import 'package:poke_app/features/home/data/models/all_types_response.dart';
 import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
@@ -52,14 +52,14 @@ class HomeDatasourceImpl implements HomeDatasource {
         fromJson: (data) => AllPokemonsResponse.fromJson(data),
       );
     } on DioException catch (dioError, st) {
-      appLogger.severe('Network error in getAllPokemons', dioError, st);
+      debugPrint('Network error in getAllPokemons $dioError, $st');
       throw PokemonNetworkException(
         ErrorMessages.networkError,
         originalError: dioError,
         stackTrace: st,
       );
     } catch (e, st) {
-      appLogger.severe('API error in getAllPokemons', e, st);
+      debugPrint('API error in getAllPokemons $e, $st');
       throw PokemonApiException(
         ErrorMessages.fetchPokemonsFailed,
         originalError: e,
@@ -78,14 +78,14 @@ class HomeDatasourceImpl implements HomeDatasource {
         fromJson: (data) => PokemonDetailResponse.fromJson(data),
       );
     } on DioException catch (dioError, st) {
-      appLogger.severe('Network error in getPokemonDetail', dioError, st);
+      debugPrint('Network error in getPokemonDetail $dioError, $st');
       throw PokemonNetworkException(
         ErrorMessages.networkError,
         originalError: dioError,
         stackTrace: st,
       );
     } catch (e, st) {
-      appLogger.severe('API error in getPokemonDetail', e, st);
+      debugPrint('API error in getPokemonDetail $e, $st');
       throw PokemonApiException(
         ErrorMessages.fetchPokemonDetailFailed,
         originalError: e,
@@ -104,14 +104,14 @@ class HomeDatasourceImpl implements HomeDatasource {
         fromJson: (data) => AllTypesResponse.fromJson(data),
       );
     } on DioException catch (dioError, st) {
-      appLogger.severe('Network error in getAllTypes', dioError, st);
+      debugPrint('Network error in getAllTypes $dioError, $st');
       throw PokemonNetworkException(
         ErrorMessages.networkError,
         originalError: dioError,
         stackTrace: st,
       );
     } catch (e, st) {
-      appLogger.severe('API error in getAllTypes', e, st);
+      debugPrint('API error in getAllTypes $e, $st');
       throw PokemonApiException(
         ErrorMessages.fetchTypesFailed,
         originalError: e,
@@ -130,14 +130,14 @@ class HomeDatasourceImpl implements HomeDatasource {
         fromJson: (data) => PokemonsByTypeResponse.fromJson(data),
       );
     } on DioException catch (dioError, st) {
-      appLogger.severe('Network error in getPokemonsByType', dioError, st);
+      debugPrint('Network error in getPokemonsByType $dioError, $st');
       throw PokemonNetworkException(
         ErrorMessages.networkError,
         originalError: dioError,
         stackTrace: st,
       );
     } catch (e, st) {
-      appLogger.severe('API error in getPokemonsByType', e, st);
+      debugPrint('API error in getPokemonsByType $e, $st');
       throw PokemonApiException(
         ErrorMessages.fetchPokemonsByTypeFailed,
         originalError: e,

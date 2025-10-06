@@ -19,4 +19,3 @@ class PokemonApiException implements Exception {
   @override
   String toString() => 'PokemonApiException: $message';
 }
-
