@@ -16,6 +16,7 @@ class PokeOnboardingPageWidget extends StatelessWidget {
     required this.buttonText,
     required this.onPressed,
     required this.isLast,
+    super.key,
   });
 
   @override
