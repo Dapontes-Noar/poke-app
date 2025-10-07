@@ -54,7 +54,7 @@ class PokeListCardWidget extends ConsumerWidget {
                 ],
               ),
             ),
-            onTap: () => context.go(Routes.details, extra: pokemon),
+            onTap: () => context.push(Routes.details, extra: pokemon),
           ),
         );
       },

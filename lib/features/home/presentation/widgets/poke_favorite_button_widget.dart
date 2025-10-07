@@ -5,8 +5,17 @@ import 'package:poke_app/styles/poke_styles.dart';
 
 class PokeFavoriteButtonWidget extends ConsumerStatefulWidget {
   final String pokemonName;
+  final Color? bgColor;
+  final bool hasBorder;
+  final double? iconSize;
 
-  const PokeFavoriteButtonWidget({required this.pokemonName, super.key});
+  const PokeFavoriteButtonWidget({
+    required this.pokemonName,
+    this.bgColor,
+    this.hasBorder = true,
+    this.iconSize,
+    super.key,
+  });
 
   @override
   ConsumerState<PokeFavoriteButtonWidget> createState() =>
@@ -28,17 +37,19 @@ class _PokeFavoriteButtonWidgetState
     return Padding(
       padding: EdgeInsets.all($pokeStyles.padding.pokefavoriteButton),
       child: IconButton(
-        iconSize: 16,
+        iconSize: widget.iconSize ?? 16,
         visualDensity: VisualDensity.compact,
         style: ButtonStyle(
           backgroundColor: WidgetStatePropertyAll(
-            $pokeStyles.colors.favoriteButtonBgColor,
+            widget.bgColor ?? $pokeStyles.colors.favoriteButtonBgColor,
           ),
           side: WidgetStatePropertyAll(
-            BorderSide(
-              color: $pokeStyles.colors.favoriteButtonBorder,
-              width: 2,
-            ),
+            widget.hasBorder
+                ? BorderSide(
+                    color: $pokeStyles.colors.favoriteButtonBorder,
+                    width: 2,
+                  )
+                : BorderSide.none,
           ),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(

@@ -19,5 +19,12 @@
   "filterClear": "Clear filter",
   "generalErrorTitle": "Something went wrong...",
   "generalErrorDescription": "We couldn't load the information at this time. Please check your connection or try again later.",
-  "generalErrorRetry": "Retry"
+  "generalErrorRetry": "Retry",
+  "pokemonGeneralDescription": "Pokémon are mysterious creatures with unique abilities and characteristics. Each Pokémon has its own strengths, weaknesses, and evolutionary path. They inhabit diverse environments and form bonds with trainers around the world.",
+  "weightLabel": "WEIGHT",
+  "heightLabel": "HEIGHT",
+  "categoryLabel": "CATEGORY",
+  "abilityLabel": "ABILITY",
+  "weaknessesLabel": "Weaknesses",
+  "genderLabel": "GENDER"
 }

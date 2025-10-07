@@ -33,4 +33,10 @@ class PokeIcons {
 
   static final deleteIcon = PokeIconsConstants.deleteIcon.toIconSvgAsset();
   static final searchIcon = PokeIconsConstants.searchIcon.toIconSvgAsset();
+  static final pokeballIcon = PokeIconsConstants.pokeballIcon.toIconSvgAsset();
+  static final heightIcon = PokeIconsConstants.heightIcon.toIconSvgAsset();
+  static final weightIcon = PokeIconsConstants.weightIcon.toIconSvgAsset();
+  static final categoryIcon = PokeIconsConstants.categoryIcon.toIconSvgAsset();
+  static final femaleIcon = PokeIconsConstants.femaleIcon.toIconSvgAsset();
+  static final maleIcon = PokeIconsConstants.maleIcon.toIconSvgAsset();
 }
