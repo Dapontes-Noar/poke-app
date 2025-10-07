@@ -7,13 +7,19 @@ code quality, state management, and UI design based on the provided Figma.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application
+### Prerequisites
+
+- Flutter SDK (version 3.0.0 or higher)
+- Dart SDK (version 2.17.0 or higher)
+- An IDE such as Visual Studio Code or Android Studio
+- Git installed on your machine
+- A device or emulator to run the app, you can use web, android or iOS
 
 ## Starting the project
 
 1. Clone the repository
    ```bash
-   git clone
+   git clone [repository_url]
     ```
 2. Navigate to the project directory
    ```bash
@@ -27,8 +33,9 @@ This project is a starting point for a Flutter application
    ```bash
     flutter run -t lib/main.dart
     ```
----
+   when run this command, you can choose the device or emulator available for run the app.
 
+---
 # Developer Guide
 
 ## Architecture Overview
@@ -177,3 +184,9 @@ This project uses the `intl` package for localization. To add a new language, fo
    ```
 3. Update the `supportedLocales` in `app.dart` to include the new language.
 4. Use the generated localization classes in your widgets, in this project we use `context.l10n.your_key`.
+
+## Styles and Theming
+The app's theming and styles are defined in the `lib/styles/` directory. You can customize colors, text styles, and
+other theme properties by modifying the files in this directory.
+- `poke_styles.dart`: Main theme configuration.
+- `colors.dart`: Color definitions.
