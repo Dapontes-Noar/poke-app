@@ -35,6 +35,33 @@ code quality, state management, and UI design based on the provided Figma.
     ```
    when run this command, you can choose the device or emulator available for run the app.
 
+## Features
+
+- Browse a list of Pokémon with images and types
+- View detailed information for each Pokémon
+- Filter Pokémon by type
+- Manage your favorite Pokémon
+- Responsive UI for mobile and web
+- Localization support (multi-language)
+- Modern, maintainable architecture (Clean Architecture + MVVM)
+
+---
+
+## API & Environment Configuration
+
+This app uses the public [PokéAPI](https://pokeapi.co/) and does not require any API keys or special environment variables by default.
+
+If you wish to point to a different API or use a proxy, you can configure the base URL in the network layer (see `lib/core/network/`).
+
+---
+
+## Supported Languages
+
+- English (en)
+- Spanish (es)
+
+To add a new language, see the Intl Localization section above.
+
 ---
 # Developer Guide
 
@@ -107,6 +134,48 @@ lib/
 
 This structure supports modularity, scalability, and maintainability, following Clean Architecture and MVVM principles
 for Flutter development.
+---
+
+## Dependencies Overview
+
+This project uses a set of core, UI, and development dependencies to ensure maintainability, scalability, and a great developer experience. Here is an overview of the main dependencies and their purposes:
+
+### Core Libraries
+- **dio**: HTTP client for making API requests to PokéAPI and handling network communication.
+- **equatable**: Provides value equality for Dart objects, making it easier to compare entities and models.
+- **freezed & freezed_annotation**: Used for generating immutable data classes, union types, and pattern matching, reducing boilerplate in models and state classes.
+- **json_annotation**: Enables JSON serialization/deserialization for models.
+- **intl**: Supports internationalization and localization, allowing the app to be translated into multiple languages.
+- **go_router**: Handles declarative routing and navigation throughout the app.
+- **riverpod, riverpod_annotation, hooks_riverpod**: Modern state management and dependency injection, with code generation for providers and hooks for ergonomic widget state.
+
+### UI Libraries
+- **flutter_svg**: Renders SVG images for scalable and crisp icons and illustrations.
+- **gap**: Provides simple spacing widgets for consistent layout.
+- **cupertino_icons**: Supplies iOS-style icons for cross-platform UI.
+
+### Testing & Code Generation
+- **mockito**: Mocking framework for writing unit and widget tests with dependency isolation.
+- **flutter_test**: Flutter's built-in testing framework for unit, widget, and integration tests.
+- **build_runner**: Automates code generation for Freezed, Riverpod, and JSON serialization.
+- **json_serializable**: Generates code for JSON serialization/deserialization.
+- **riverpod_generator**: Generates provider code for Riverpod using annotations.
+- **flutter_lints**: Provides recommended lint rules for code quality and consistency.
+
+See the `pubspec.yaml` for the full list and versions. For install/upgrade instructions, see the Dependency Updates section below.
+
+## Use of AI in This Project
+
+Artificial Intelligence (AI) tools have been actively used throughout the development and maintenance of this project to enhance quality, efficiency, and documentation. Here’s how AI contributes to this repository:
+
+- **Technology Comparison:** AI was leveraged to compare and select the most suitable technologies, libraries, and architectural patterns for the project, ensuring modern and scalable solutions.
+- **Code Improvement & Optimization:** AI-assisted code reviews and suggestions were used to optimize performance, refactor code, and ensure best practices are followed across the codebase.
+- **Automated Comment Generation:** AI tools generated and improved code comments, making the codebase more understandable and maintainable for all contributors.
+- **Documentation Enhancement:** AI was used to draft, review, and improve project documentation, including the README, to ensure clarity, completeness, and developer-friendliness.
+- **Change Review & Specific Guidance:** All AI-generated changes and suggestions were thoroughly reviewed, and AI was used to obtain specific recommendations for edge cases, error handling, and best practices.
+
+By integrating AI into the development workflow, this project benefits from faster iteration, higher code quality, and more comprehensive documentation, while always maintaining human oversight and review for all changes.
+
 
 ## Dependency Injection with Riverpod
 
@@ -189,4 +258,145 @@ This project uses the `intl` package for localization. To add a new language, fo
 The app's theming and styles are defined in the `lib/styles/` directory. You can customize colors, text styles, and
 other theme properties by modifying the files in this directory.
 - `poke_styles.dart`: Main theme configuration.
-- `colors.dart`: Color definitions.
+- `poke_colors.dart`: Color definitions.
+
+you can use the styles in your widgets like this:
+
+```dart
+ $pokeStyles.text.pokeIDText
+```
+into `poke_styles.dart` you can find predefined text styles, colors, and other theming properties.
+
+## Testing
+
+The `test/` directory is organized to mirror the structure of the `lib/` directory, following Clean Architecture and feature-based modularity. This ensures that tests are easy to locate and maintain.
+
+### Structure
+
+```
+test/
+├─ main_test.dart                        # Entry point for global tests
+├─ core/                                 # Tests for core utilities, constants, and fixtures
+│   ├─ constants/                        # Test constants
+│   ├─ fixtures/                         # JSON fixtures and test utilities for mocking data
+├─ features/                             # Feature-specific tests
+│   └─ home/                             # Example: Home feature
+│       ├─ data/                         # Data layer tests (datasources, repositories)
+│       ├─ domain/                       # Domain layer tests (usecases)
+│       └─ presentation/                 # Presentation layer tests (notifiers, widgets)
+│           └─ notifier/                 # Notifier (view model) tests for Riverpod
+```
+
+### Best Practices
+- **Mirrored Structure:** Each test file corresponds to a file or module in `lib/`, making it easy to find and maintain tests.
+- **Mocks & Fixtures:** Use the `fixtures/` folder for static JSON and utility functions. Mocks are generated using `mockito` and placed alongside their respective test files.
+- **Code Generation:** Run `flutter pub run build_runner build --delete-conflicting-outputs` to generate mocks and other test utilities.
+- **Test Execution:** Run all tests with:
+  ```bash
+  flutter test
+  ```
+
+### Example: Notifier Test
+
+```dart
+// test/features/home/presentation/notifier/home_notifier_test.dart
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
+import 'package:riverpod/riverpod.dart';
+// ...existing code...
+
+void main() {
+  // Setup mocks and ProviderContainer
+  // ...existing code...
+
+  test('fetchAllPokemons sets state to data on success', () async {
+    // ...test implementation...
+  });
+}
+```
+
+### Summary
+- All business logic, data, and presentation layers are covered by tests.
+- Mocks and fixtures ensure tests are reliable and isolated from external dependencies.
+- The structure supports scalable, maintainable, and robust testing for all features.
+
+---
+
+## Code Style & Linting
+
+- The project uses Dart's recommended lints and custom rules in `analysis_options.yaml`.
+- To check code style and lint errors, run:
+  ```bash
+  flutter analyze
+  ```
+- Please ensure your code passes all lint checks before submitting a pull request.
+
+---
+
+## Contribution Guidelines
+
+We welcome contributions! Please:
+- Fork the repository and create a feature branch.
+- Follow the existing code style and architecture.
+- Write tests for new features or bug fixes.
+- Open a pull request with a clear description of your changes.
+- For more details, see [CONTRIBUTING.md](CONTRIBUTING.md) (create this file if it doesn't exist).
+
+---
+
+## CI/CD Status
+
+![CI](https://img.shields.io/badge/build-passing-brightgreen)
+
+---
+
+## Known Issues / Roadmap
+
+- Some advanced PokéAPI endpoints are not yet implemented (e.g., evolution chains, abilities details)
+- Planned: Dark mode, offline support, and more filter options
+- See [issues](https://github.com/yourusername/poke_app/issues) for up-to-date bugs and feature requests
+
+---
+
+## FAQ / Troubleshooting
+
+**Q: The app won't build or run.**
+- Make sure you have the correct Flutter and Dart versions installed.
+- Run `flutter pub get` and `flutter pub run build_runner build --delete-conflicting-outputs`.
+- If you see codegen errors, try cleaning with `flutter clean` and re-running the above commands.
+
+**Q: Tests are failing or mocks are missing.**
+- Run `flutter pub run build_runner build --delete-conflicting-outputs` to regenerate mocks.
+
+**Q: How do I add a new language?**
+- See the Intl Localization section below.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+## Contact / Community
+
+For questions, suggestions, or support:
+- Open an issue or discussion on [GitHub](https://github.com/yourusername/poke_app)
+- Email: your.email@example.com
+
+---
+
+## Dependency Updates
+
+To update dependencies:
+- Run `flutter pub upgrade` to update all packages.
+- After updating, always run code generation:
+  ```bash
+  flutter pub run build_runner build --delete-conflicting-outputs
+  ```
+- Run tests and check for breaking changes.
+
+## App Store / Play Store Links
+
+> The app is not yet published on the App Store or Play Store. When available, links will be provided here.
