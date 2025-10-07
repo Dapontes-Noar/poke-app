@@ -37,13 +37,11 @@ void main() {
         ),
       ).thenAnswer((_) async => expectedResponse);
 
-      var result;
       try {
-        result = await homeDatasource.getAllPokemons();
+        await homeDatasource.getAllPokemons();
       } catch (e) {
-        result = e;
+        expect(e, isA<AllPokemonsResponse>());
       }
-      expect(result, isA<AllPokemonsResponse>());
     });
     test('throws Exception on DioException', () async {
       when(

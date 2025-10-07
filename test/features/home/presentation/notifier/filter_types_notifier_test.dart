@@ -37,11 +37,8 @@ void main() {
     test('build initializes with all types and empty selected set', () async {
       when(mockUseCase.call()).thenAnswer((_) async => mockResponse);
 
-      // act
-      final notifier = container.read(filterTypesProvider);
       final state = await container.read(filterTypesProvider.future);
 
-      // assert
       expect(state.allTypesResponse, equals(mockResponse));
       expect(state.selectedTypes, isEmpty);
     });

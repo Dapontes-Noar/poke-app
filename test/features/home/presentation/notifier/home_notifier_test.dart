@@ -3,9 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:poke_app/features/home/data/models/all_types_response.dart';
 import 'package:poke_app/features/home/data/models/pokemon_response.dart';
-import 'package:poke_app/features/home/data/models/pokemons_by_type_response.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:poke_app/features/home/data/models/all_pokemons_response.dart';
 import 'package:poke_app/features/home/domain/usecases/filter_pokemons_by_types_usecase.dart';
@@ -22,14 +20,6 @@ void main() {
   late MockFilterPokemonsByTypesUsecase mockFilterByTypes;
   final allPokemonsData = jsonDecode(getFixture('all_Pokemons.json'));
   final fakePokemons = AllPokemonsResponse.fromJson(allPokemonsData);
-  final allTypesData = jsonDecode(getFixture('pokemon_all_types.json'));
-  final allTypesResponse = AllTypesResponse.fromJson(allTypesData);
-  final filterTypesDataResponse = jsonDecode(
-    getFixture('pokemon_grass_type.json'),
-  );
-  final mockFilterTypesDataResponse = PokemonsByTypeResponse.fromJson(
-    filterTypesDataResponse,
-  );
 
   setUp(() {
     mockGetAllPokemons = MockGetAllPokemonUsecase();

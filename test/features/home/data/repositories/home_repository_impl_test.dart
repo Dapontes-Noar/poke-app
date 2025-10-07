@@ -33,13 +33,7 @@ void main() {
         mockHomeDatasource.getAllPokemons(),
       ).thenAnswer((_) async => expectedResponse);
 
-      var result;
-
-      try {
-        result = await homeRepository.getAllPokemons();
-      } catch (e) {
-        result = e;
-      }
+      final result = await homeRepository.getAllPokemons();
       expect(result, isA<AllPokemonsResponse>());
     });
     test('throws Exception on failure', () async {

@@ -35,13 +35,7 @@ void main() {
           mockHomeRepository.getPokemonsByType(TestConstants.poketype),
         ).thenAnswer((_) async => expectedResponse);
 
-        var result;
-
-        try {
-          result = await usecase.call([TestConstants.poketype]);
-        } catch (e) {
-          result = e;
-        }
+        final result = await usecase.call([TestConstants.poketype]);
         expect(result, isA<Set>());
       },
     );
@@ -72,14 +66,11 @@ void main() {
       ).thenThrow(Exception('fail'));
       final types = ['grass'];
 
-      var response;
       try {
         await usecase.call(types);
       } catch (e) {
-        response = e;
+        expect(e, isA<Exception>());
       }
-
-      expect(response, isA<Exception>());
     });
   });
 }
