@@ -10,8 +10,10 @@ abstract class PokemonTypeResponse with _$PokemonTypeResponse {
   const factory PokemonTypeResponse({
     required int id,
     required String name,
-    @JsonKey(name:'damage_relations') required PokemonTypeDamageRelations damageRelations,
+    @JsonKey(name: 'damage_relations')
+    required PokemonTypeDamageRelations damageRelations,
   }) = _PokemonTypeResponse;
 
-  factory PokemonTypeResponse.fromJson(Map<String, dynamic> json) => _$PokemonTypeResponseFromJson(json);
+  factory PokemonTypeResponse.fromJson(Map<String, dynamic> json) =>
+      _$PokemonTypeResponseFromJson(json);
 }

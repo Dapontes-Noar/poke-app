@@ -10,6 +10,6 @@ abstract class PokemonTypePokemon with _$PokemonTypePokemon {
     required int slot,
   }) = _PokemonTypePokemon;
 
-  factory PokemonTypePokemon.fromJson(Map<String, dynamic> json) => _$PokemonTypePokemonFromJson(json);
+  factory PokemonTypePokemon.fromJson(Map<String, dynamic> json) =>
+      _$PokemonTypePokemonFromJson(json);
 }
-

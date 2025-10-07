@@ -11,5 +11,6 @@ abstract class PokemonGenus with _$PokemonGenus {
     required PokemonNamedApiResource language,
   }) = _PokemonGenus;
 
-  factory PokemonGenus.fromJson(Map<String, dynamic> json) => _$PokemonGenusFromJson(json);
+  factory PokemonGenus.fromJson(Map<String, dynamic> json) =>
+      _$PokemonGenusFromJson(json);
 }

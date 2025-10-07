@@ -18,7 +18,7 @@ abstract class PokemonOtherSprites with _$PokemonOtherSprites {
 @freezed
 abstract class SpriteResponse with _$SpriteResponse {
   const factory SpriteResponse({
-    @JsonKey(name: 'front_default') String? frontDefault
+    @JsonKey(name: 'front_default') String? frontDefault,
   }) = _SpriteResponse;
   factory SpriteResponse.fromJson(Map<String, dynamic> json) =>
       _$SpriteResponseFromJson(json);

@@ -13,6 +13,6 @@ abstract class PokemonFlavorTextEntry with _$PokemonFlavorTextEntry {
     required PokemonNamedApiResource version,
   }) = _PokemonFlavorTextEntry;
 
-  factory PokemonFlavorTextEntry.fromJson(Map<String, dynamic> json) => _$PokemonFlavorTextEntryFromJson(json);
+  factory PokemonFlavorTextEntry.fromJson(Map<String, dynamic> json) =>
+      _$PokemonFlavorTextEntryFromJson(json);
 }
-

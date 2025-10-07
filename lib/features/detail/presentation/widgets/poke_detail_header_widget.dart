@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:poke_app/features/detail/presentation/widgets/poke_detail_app_bar_widget.dart';
 import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
 import 'package:poke_app/shared/utils/poke_type_theme.dart';
 import 'package:poke_app/shared/widgets/poke_detail_header_painter.dart';

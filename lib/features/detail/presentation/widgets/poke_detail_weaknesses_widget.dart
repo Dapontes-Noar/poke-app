@@ -27,10 +27,9 @@ class PokeDetailWeaknessesWidget extends StatelessWidget {
           Wrap(
             spacing: 8,
             runSpacing: 8,
-            children: doubleDamageFrom
-                    ?.map(
-                      (type) => PokeTypeChipWidget(pokemonType: type),
-                    )
+            children:
+                doubleDamageFrom
+                    ?.map((type) => PokeTypeChipWidget(pokemonType: type))
                     .toList() ??
                 [],
           ),

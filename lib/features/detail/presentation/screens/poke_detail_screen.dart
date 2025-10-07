@@ -39,7 +39,6 @@ class PokeDetailScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               PokeDetailHeaderWidget(pokemon: pokemon),
-              // Name, number, types, description
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: PokeDetailInfoWidget(
@@ -95,7 +94,4 @@ class PokeDetailScreen extends ConsumerWidget {
       ),
     );
   }
-
-  String _capitalize(String s) =>
-      s.isNotEmpty ? s[0].toUpperCase() + s.substring(1) : s;
 }
