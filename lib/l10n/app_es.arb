@@ -19,5 +19,12 @@
   "filterClear": "Borrar filtro",
   "generalErrorTitle": "Algo salió mal...",
   "generalErrorDescription": "No pudimos cargar la información en este momento. Verifica tu conexión o intenta nuevamente más tarde.",
-  "generalErrorRetry": "Reintentar"
+  "generalErrorRetry": "Reintentar",
+  "pokemonGeneralDescription": "Los Pokémon son criaturas misteriosas con habilidades y características únicas. Cada uno posee fortalezas, debilidades y una evolución propia. Habitan entornos diversos y forman lazos con entrenadores de todo el mundo.",
+  "weightLabel": "PESO",
+  "heightLabel": "ALTURA",
+  "categoryLabel": "CATEGORÍA",
+  "abilityLabel": "HABILIDAD",
+  "weaknessesLabel": "Debilidades",
+  "genderLabel": "GÉNERO"
 }

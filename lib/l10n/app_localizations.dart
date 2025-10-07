@@ -217,6 +217,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Retry'**
   String get generalErrorRetry;
+
+  /// No description provided for @pokemonGeneralDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Pokémon are mysterious creatures with unique abilities and characteristics. Each Pokémon has its own strengths, weaknesses, and evolutionary path. They inhabit diverse environments and form bonds with trainers around the world.'**
+  String get pokemonGeneralDescription;
+
+  /// No description provided for @weightLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'WEIGHT'**
+  String get weightLabel;
+
+  /// No description provided for @heightLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'HEIGHT'**
+  String get heightLabel;
+
+  /// No description provided for @categoryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'CATEGORY'**
+  String get categoryLabel;
+
+  /// No description provided for @abilityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'ABILITY'**
+  String get abilityLabel;
+
+  /// No description provided for @weaknessesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Weaknesses'**
+  String get weaknessesLabel;
+
+  /// No description provided for @genderLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'GENDER'**
+  String get genderLabel;
 }
 
 class _AppLocalizationsDelegate

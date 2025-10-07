@@ -26,7 +26,7 @@ class PokeCardInfoWidget extends StatelessWidget {
           spacing: 8,
           runSpacing: 8,
           children: pokemon.types
-              .map((type) => PokeTypeChipWidget(pokemonType: type))
+              .map((type) => PokeTypeChipWidget(pokemonType: type.type))
               .toList(),
         ),
       ],

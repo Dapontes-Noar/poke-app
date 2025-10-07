@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:poke_app/features/home/data/models/pokemon_other_sprites.dart';
 
 part 'pokemon_sprites_response.freezed.dart';
 part 'pokemon_sprites_response.g.dart';
@@ -11,6 +12,7 @@ abstract class PokemonSpritesResponse with _$PokemonSpritesResponse {
     @JsonKey(name: 'back_default') String? backDefault,
     @JsonKey(name: 'front_shiny') String? frontShiny,
     @JsonKey(name: 'back_shiny') String? backShiny,
+    final PokemonOtherSprites? other,
   }) = _PokemonSpritesResponse;
 
   factory PokemonSpritesResponse.fromJson(Map<String, dynamic> json) =>

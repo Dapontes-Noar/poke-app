@@ -5,7 +5,7 @@ import 'package:poke_app/shared/utils/poke_type_theme.dart';
 import 'package:poke_app/styles/poke_styles.dart';
 
 class PokeTypeChipWidget extends StatelessWidget {
-  final PokemonTypeResponse pokemonType;
+  final TypeInfoResponse pokemonType;
 
   const PokeTypeChipWidget({super.key, required this.pokemonType});
 
@@ -22,16 +22,16 @@ class PokeTypeChipWidget extends StatelessWidget {
       side: BorderSide.none,
       visualDensity: VisualDensity.standard,
       elevation: 0,
-      backgroundColor: PokeTypeTheme.colorFor(pokemonType.type.name),
+      backgroundColor: PokeTypeTheme.colorFor(pokemonType.name),
       avatar: CircleAvatar(
         backgroundColor: Colors.white,
         child: Padding(
           padding: EdgeInsets.all($pokeStyles.padding.typeChipAvatar),
-          child: PokeTypeTheme.spriteFor(pokemonType.type.name),
+          child: PokeTypeTheme.spriteFor(pokemonType.name),
         ),
       ),
       label: Text(
-        pokemonType.type.name.toCapitalize(),
+        pokemonType.name.toCapitalize(),
         style: $pokeStyles.text.typeChipLabel,
       ),
     );

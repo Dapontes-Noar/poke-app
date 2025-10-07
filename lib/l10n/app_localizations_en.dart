@@ -74,4 +74,26 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get generalErrorRetry => 'Retry';
+
+  @override
+  String get pokemonGeneralDescription =>
+      'Pokémon are mysterious creatures with unique abilities and characteristics. Each Pokémon has its own strengths, weaknesses, and evolutionary path. They inhabit diverse environments and form bonds with trainers around the world.';
+
+  @override
+  String get weightLabel => 'WEIGHT';
+
+  @override
+  String get heightLabel => 'HEIGHT';
+
+  @override
+  String get categoryLabel => 'CATEGORY';
+
+  @override
+  String get abilityLabel => 'ABILITY';
+
+  @override
+  String get weaknessesLabel => 'Weaknesses';
+
+  @override
+  String get genderLabel => 'GENDER';
 }

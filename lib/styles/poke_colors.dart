@@ -12,6 +12,8 @@ class PokeColors {
   final Color filterLabelColor = const Color(0xFF424242);
   final Color filterCheckboxSideColor = const Color(0xFFD6D6D6);
   final Color filterCheckboxCheckColor = const Color(0xFF1F49B6);
+  final Color femaleGenderColor = const Color(0xFF2551C3);
+  final Color maleGenderColor = const Color(0xFFFF7596);
 
   /// Card colors
   final Color pokeIDColor = const Color(0xFF424242);

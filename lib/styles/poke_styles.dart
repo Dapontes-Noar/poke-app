@@ -36,6 +36,10 @@ class _PokeText {
   late final TextStyle pokeButtonLabel;
   late final TextStyle navBarFilterLabel;
   late final TextStyle navBarFilterCleanLabel;
+  late final TextStyle pokeMeasuresLabel;
+  late final TextStyle pokeDetailName;
+  late final TextStyle pokeDetailId;
+  late final TextStyle pokeDetailDescription;
 
   _PokeText() {
     pokeIDText = TextStyle(
@@ -152,6 +156,30 @@ class _PokeText {
       color: $pokeStyles.colors.filterPrimaryButtonColor,
       fontFamily: fontFamily,
       fontWeight: FontWeight.w500,
+    );
+    pokeMeasuresLabel = TextStyle(
+      color: $pokeStyles.colors.pokeIDColor,
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      fontFamily: fontFamily,
+    );
+    pokeDetailName = TextStyle(
+      color: $pokeStyles.colors.pokeNameColor,
+      fontFamily: fontFamily,
+      fontSize: 32,
+      fontWeight: FontWeight.w500,
+    );
+    pokeDetailId = TextStyle(
+      color: $pokeStyles.colors.pokeIDColor,
+      fontFamily: fontFamily,
+      fontSize: 15,
+      fontWeight: FontWeight.w500,
+    );
+    pokeDetailDescription = TextStyle(
+      color: Colors.black87,
+      fontFamily: fontFamily,
+      fontSize: 15,
+      fontWeight: FontWeight.w400,
     );
   }
 }
