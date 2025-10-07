@@ -96,4 +96,24 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get genderLabel => 'GÉNERO';
+
+  @override
+  String get onboarding1Title => 'Todos los Pokémon en un solo lugar';
+
+  @override
+  String get onboarding1Description =>
+      'Accede a una amplia lista de Pokémon de todas las generaciones creadas por Nintendo';
+
+  @override
+  String get onboarding1Button => 'Continuar';
+
+  @override
+  String get onboarding2Title => 'Mantén tu Pokédex actualizada';
+
+  @override
+  String get onboarding2Description =>
+      'Regístrate y guarda tu perfil, Pokémon favoritos, configuraciones y mucho más en la aplicación';
+
+  @override
+  String get onboarding2Button => 'Empecemos';
 }

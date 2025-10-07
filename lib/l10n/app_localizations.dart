@@ -259,6 +259,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'GENDER'**
   String get genderLabel;
+
+  /// No description provided for @onboarding1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'All Pokémon in one place'**
+  String get onboarding1Title;
+
+  /// No description provided for @onboarding1Description.
+  ///
+  /// In en, this message translates to:
+  /// **'Access a wide list of Pokémon from all generations created by Nintendo'**
+  String get onboarding1Description;
+
+  /// No description provided for @onboarding1Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get onboarding1Button;
+
+  /// No description provided for @onboarding2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep your Pokédex updated'**
+  String get onboarding2Title;
+
+  /// No description provided for @onboarding2Description.
+  ///
+  /// In en, this message translates to:
+  /// **'Register and save your profile, favorite Pokémon, settings, and much more in the app'**
+  String get onboarding2Description;
+
+  /// No description provided for @onboarding2Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s start'**
+  String get onboarding2Button;
 }
 
 class _AppLocalizationsDelegate
