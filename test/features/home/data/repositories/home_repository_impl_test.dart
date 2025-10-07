@@ -54,7 +54,12 @@ void main() {
       }
     });
     test('throws Exception when no Pokemons found', () async {
-      final expectedResponse = AllPokemonsResponse(results: [], count: 0, next: null, previous: null);
+      final expectedResponse = AllPokemonsResponse(
+        results: [],
+        count: 0,
+        next: null,
+        previous: null,
+      );
 
       when(
         mockHomeDatasource.getAllPokemons(),
@@ -83,13 +88,17 @@ void main() {
     test('returns data when getPokemonDetail success', () async {
       final dataResponse = jsonDecode(getFixture('pokemon_details.json'));
       final expectedResponse = PokemonDetailResponse.fromJson(dataResponse);
-      when(mockHomeDatasource.getPokemonDetail('1')).thenAnswer((_) async => expectedResponse);
+      when(
+        mockHomeDatasource.getPokemonDetail('1'),
+      ).thenAnswer((_) async => expectedResponse);
       final result = await homeRepository.getPokemonDetail('1');
       expect(result, isA<PokemonDetailResponse>());
       expect(result, expectedResponse);
     });
     test('throws Exception on failure', () async {
-      when(mockHomeDatasource.getPokemonDetail('1')).thenThrow(Exception('Failed to fetch Pokemon detail'));
+      when(
+        mockHomeDatasource.getPokemonDetail('1'),
+      ).thenThrow(Exception('Failed to fetch Pokemon detail'));
       try {
         await homeRepository.getPokemonDetail('1');
       } catch (e) {
@@ -97,7 +106,9 @@ void main() {
       }
     });
     test('throws Exception on generic Exception', () async {
-      when(mockHomeDatasource.getPokemonDetail('1')).thenThrow(Exception('Generic error'));
+      when(
+        mockHomeDatasource.getPokemonDetail('1'),
+      ).thenThrow(Exception('Generic error'));
       try {
         await homeRepository.getPokemonDetail('1');
       } catch (e) {
@@ -110,14 +121,23 @@ void main() {
     test('returns data when getAllTypes success', () async {
       final dataResponse = jsonDecode(getFixture('pokemon_all_types.json'));
       final expectedResponse = AllTypesResponse.fromJson(dataResponse);
-      when(mockHomeDatasource.getAllTypes()).thenAnswer((_) async => expectedResponse);
+      when(
+        mockHomeDatasource.getAllTypes(),
+      ).thenAnswer((_) async => expectedResponse);
       final result = await homeRepository.getAllTypes();
       expect(result, isA<AllTypesResponse>());
       expect(result, expectedResponse);
     });
     test('throws Exception when no types found', () async {
-      final emptyResponse = AllTypesResponse(results: [], count: 0, next: null, previous: null);
-      when(mockHomeDatasource.getAllTypes()).thenAnswer((_) async => emptyResponse);
+      final emptyResponse = AllTypesResponse(
+        results: [],
+        count: 0,
+        next: null,
+        previous: null,
+      );
+      when(
+        mockHomeDatasource.getAllTypes(),
+      ).thenAnswer((_) async => emptyResponse);
       try {
         await homeRepository.getAllTypes();
       } catch (e) {
@@ -125,7 +145,9 @@ void main() {
       }
     });
     test('throws Exception on failure', () async {
-      when(mockHomeDatasource.getAllTypes()).thenThrow(Exception('Failed to fetch types'));
+      when(
+        mockHomeDatasource.getAllTypes(),
+      ).thenThrow(Exception('Failed to fetch types'));
       try {
         await homeRepository.getAllTypes();
       } catch (e) {
@@ -133,7 +155,9 @@ void main() {
       }
     });
     test('throws Exception on generic Exception', () async {
-      when(mockHomeDatasource.getAllTypes()).thenThrow(Exception('Generic error'));
+      when(
+        mockHomeDatasource.getAllTypes(),
+      ).thenThrow(Exception('Generic error'));
       try {
         await homeRepository.getAllTypes();
       } catch (e) {
@@ -146,14 +170,18 @@ void main() {
     test('returns data when getPokemonsByType success', () async {
       final dataResponse = jsonDecode(getFixture('pokemon_grass_type.json'));
       final expectedResponse = PokemonsByTypeResponse.fromJson(dataResponse);
-      when(mockHomeDatasource.getPokemonsByType('grass')).thenAnswer((_) async => expectedResponse);
+      when(
+        mockHomeDatasource.getPokemonsByType('grass'),
+      ).thenAnswer((_) async => expectedResponse);
       final result = await homeRepository.getPokemonsByType('grass');
       expect(result, isA<PokemonsByTypeResponse>());
       expect(result, expectedResponse);
     });
     test('throws Exception when no pokemons found for type', () async {
       final emptyResponse = PokemonsByTypeResponse(pokemon: []);
-      when(mockHomeDatasource.getPokemonsByType('grass')).thenAnswer((_) async => emptyResponse);
+      when(
+        mockHomeDatasource.getPokemonsByType('grass'),
+      ).thenAnswer((_) async => emptyResponse);
       try {
         await homeRepository.getPokemonsByType('grass');
       } catch (e) {
@@ -161,7 +189,9 @@ void main() {
       }
     });
     test('throws Exception on failure', () async {
-      when(mockHomeDatasource.getPokemonsByType('grass')).thenThrow(Exception('Failed to fetch pokemons by type'));
+      when(
+        mockHomeDatasource.getPokemonsByType('grass'),
+      ).thenThrow(Exception('Failed to fetch pokemons by type'));
       try {
         await homeRepository.getPokemonsByType('grass');
       } catch (e) {
@@ -169,7 +199,9 @@ void main() {
       }
     });
     test('throws Exception on generic Exception', () async {
-      when(mockHomeDatasource.getPokemonsByType('grass')).thenThrow(Exception('Generic error'));
+      when(
+        mockHomeDatasource.getPokemonsByType('grass'),
+      ).thenThrow(Exception('Generic error'));
       try {
         await homeRepository.getPokemonsByType('grass');
       } catch (e) {

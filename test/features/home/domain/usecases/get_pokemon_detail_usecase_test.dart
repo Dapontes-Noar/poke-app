@@ -21,18 +21,23 @@ void main() {
   test('returns PokemonDetailResponse when repository succeeds', () async {
     final data = jsonDecode(getFixture('pokemon_details.json'));
     final response = PokemonDetailResponse.fromJson(data);
-    when(mockRepository.getPokemonDetail('1')).thenAnswer((_) async => response);
+    when(
+      mockRepository.getPokemonDetail('1'),
+    ).thenAnswer((_) async => response);
     final result = await usecase('1');
     expect(result, response);
   });
 
-  test('throws Exception with correct message when repository throws', () async {
-    when(mockRepository.getPokemonDetail('1')).thenThrow(Exception('fail'));
-    try {
-      await usecase('1');
-      fail('Should throw');
-    } catch (e) {
-      expect(e, isA<Exception>());
-    }
-  });
+  test(
+    'throws Exception with correct message when repository throws',
+    () async {
+      when(mockRepository.getPokemonDetail('1')).thenThrow(Exception('fail'));
+      try {
+        await usecase('1');
+        fail('Should throw');
+      } catch (e) {
+        expect(e, isA<Exception>());
+      }
+    },
+  );
 }

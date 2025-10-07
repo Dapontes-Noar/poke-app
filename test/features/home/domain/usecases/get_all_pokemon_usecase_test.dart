@@ -34,7 +34,6 @@ void main() {
         await usecase();
         fail('Should throw');
       } catch (e) {
-
         expect(e, isA<Exception>());
       }
     },
