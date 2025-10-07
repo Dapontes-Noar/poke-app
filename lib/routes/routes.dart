@@ -4,4 +4,5 @@ class Routes {
   static const String regions = '/regions';
   static const String favorites = '/favorites';
   static const String profile = '/profile';
+  static const String onboarding = '/onboarding';
 }

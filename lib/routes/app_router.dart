@@ -2,6 +2,7 @@ import 'package:poke_app/features/detail/presentation/screens/poke_detail_screen
 import 'package:poke_app/features/home/data/models/pokemon_detail_response.dart';
 import 'package:poke_app/features/home/presentation/screens/poke_home_screen.dart';
 import 'package:poke_app/features/favorites/presentation/screens/poke_favorites_screen.dart';
+import 'package:poke_app/features/onboarding/presentation/screens/poke_onboarding_screeen.dart';
 import 'package:poke_app/features/regions/presentation/screens/poke_regions_screen.dart';
 import 'package:poke_app/features/profile/presentation/screens/poke_profile_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -13,7 +14,7 @@ part 'app_router.g.dart';
 
 @Riverpod(keepAlive: true)
 GoRouter buildAppRouter(Ref ref) => GoRouter(
-  initialLocation: Routes.home,
+  initialLocation: Routes.onboarding,
   routes: [
     GoRoute(
       path: Routes.home,
@@ -45,6 +46,13 @@ GoRouter buildAppRouter(Ref ref) => GoRouter(
       path: Routes.profile,
       pageBuilder: (context, state) => buildPageWithTransition(
         child: const PokeProfileScreen(),
+        state: state,
+      ),
+    ),
+    GoRoute(
+      path: Routes.onboarding,
+      pageBuilder: (context, state) => buildPageWithTransition(
+        child: const PokeOnboardingScreen(),
         state: state,
       ),
     ),

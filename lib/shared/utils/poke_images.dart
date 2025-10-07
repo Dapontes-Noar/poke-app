@@ -9,6 +9,12 @@ class PokeImages {
       .toImagePngAsset();
   static final Image errorMagikarpImage = PokeImagesConstants.magikarpImage
       .toImagePngAsset();
+  static final Widget pokeballImage = PokeImagesConstants.pokeballImage
+      .toImageSvgAsset();
+  static final Image playImage = PokeImagesConstants.playImage
+      .toImagePngAsset();
+  static final Image hildaImage = PokeImagesConstants.hildaImage
+      .toImagePngAsset();
 
   /// pokemon type sprites
   static final Widget fireSprite = PokeImagesConstants.fireSprite

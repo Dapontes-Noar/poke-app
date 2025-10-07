@@ -26,5 +26,11 @@
   "categoryLabel": "CATEGORY",
   "abilityLabel": "ABILITY",
   "weaknessesLabel": "Weaknesses",
-  "genderLabel": "GENDER"
+  "genderLabel": "GENDER",
+  "onboarding1Title": "All Pokémon in one place",
+  "onboarding1Description": "Access a wide list of Pokémon from all generations created by Nintendo",
+  "onboarding1Button": "Continue",
+  "onboarding2Title": "Keep your Pokédex updated",
+  "onboarding2Description": "Register and save your profile, favorite Pokémon, settings, and much more in the app",
+  "onboarding2Button": "Let's start"
 }

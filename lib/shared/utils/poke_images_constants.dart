@@ -3,6 +3,9 @@ class PokeImagesConstants {
   /// general assets path
   static const String jigglypuffImage = 'jigglypuff_image';
   static const String magikarpImage = 'magikarp_image';
+  static const String pokeballImage = 'pokeball_image';
+  static const String playImage = 'play_image';
+  static const String hildaImage = 'sprite_hilda_image';
 
   /// pokemon type sprites
   static const String fireSprite = 'fire_sprite';
